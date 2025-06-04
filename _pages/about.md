@@ -42,8 +42,8 @@ redirect_from:
     <img src="/AIlearn.github.io/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang">
     <h2>Thi Hoang Yen Dang</h2>
     <p><strong>👋 Github:</strong> <a href="https://github.com/yen010390" target="_blank" rel="noopener noreferrer">https://github.com/yen010390</a></p>
-    <p><strong>⚙ About Me:</strong> Passionate LEAN, Operation Research and problem-solving.</p>
-    <p><strong>💡 Interests:</strong> AI, Operation Research, Travelling</p>
+    <p><strong>⚙ About Me:</strong> Passionate in LEAN 6Sigma, Operation Research and problem-solving.</p>
+    <p><strong>💡 Interests:</strong> LEAN, AI, Operation Research, Travelling</p>
     <p><strong>💪 Personal Goal:</strong> Build practical discrete optimization/ ML solutions to pursuit PhD.</p>
     <p><strong>🏫 Education:</strong><br> 
       - B.S. - Industrial Management @ Ho Chi Minh University of Technology <br>
