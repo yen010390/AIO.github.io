@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Introduction 👋"
+title: "Introduction"
 author_profile: true
 redirect_from: 
   - /about/
@@ -31,8 +31,8 @@ redirect_from:
 </style>
 
 <p><br> 
-  Hello there, we are on the processing... learning AI!<br> 
-  Our team has 2 members.<br> 
+  👋 Hello there, we are on the processing... learning AI!<br> 
+  👭 Our team has 2 members.<br> 
   Let's introduce ourselves and check out our website.</p>
 <hr />
 
@@ -74,8 +74,8 @@ redirect_from:
 
 <hr />
 
-<h2>🎯 About This Website</h2>
-<p>This website is created to document our journey in learning Artificial Intelligence, from foundational knowledge to applied projects. You can explore different sections below:</p>
+<h2>🎯 About Our Website</h2>
+<p>Our website is created to document our journey in learning Artificial Intelligence, from foundational knowledge to applied projects. You can explore different sections below:</p>
 
 <ul>
   <li><a href="/AIlearn.github.io/posts/">📝 Blog Posts</a> – Insights, lessons, and reflections on AI topics.</li>
