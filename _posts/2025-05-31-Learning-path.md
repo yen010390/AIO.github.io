@@ -7,6 +7,7 @@ author_profile: true
 ---
 
 Tóm tắt: Content of Module, Link 
+
 ---
 
 ## 🎓 Welcome to the AI Learning Path
