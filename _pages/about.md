@@ -46,6 +46,7 @@ redirect_from:
       - Manufacturing Excellent Engineer at Colgate Palomive (VN) <br> 
       - Intern Process Optimization at Quantron AG (DE).</p>
   </div>
+  </div>
 
   <!-- Member 2 -->
   <div class="profile">
@@ -58,6 +59,7 @@ redirect_from:
       Bachelor of Engineering - Mechanical Engineer at Ho Chi Minh University of Technology <br>
       Master of Science - Global Production Engineering @ TU Berlin</p>
     <p><strong>💰 Experience:</strong> Designer, Project Manager at XXXX Startups.</p>
+  </div>
   </div>
 
 </div>
