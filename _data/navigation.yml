@@ -25,6 +25,9 @@ main:
 
   - title: "Portfolio"
     url: /portfolio/
+
+  - title: "Certification"
+    url: /certification/
     
   - title: "CV"
     url: /files/Yen Dang-CV-04062025.pdf
