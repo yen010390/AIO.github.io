@@ -16,15 +16,15 @@ main:
 
   # - title: "Teaching"
   #   url: /teaching/    
-    
-  - title: "Portfolio"
-    url: /portfolio/
         
   - title: "Blog Posts"
     url: /year-archive/
 
   - title: "Project"
     url: /project/
+
+  - title: "Portfolio"
+    url: /portfolio/
     
   - title: "CV"
     url: /files/Yen Dang-CV-04062025.pdf
