@@ -6,11 +6,8 @@ permalink: /reference/
 author_profile: true
 ---
 
-List of references
 
----
-
-## 📘 Reference Materials
+## 📘 List of references
 
 This project is inspired by and makes use of exercises and resources from the following repository:
 
