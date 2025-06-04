@@ -1,11 +1,48 @@
 ---
-title: 'Future Blog Post'
-date: 2199-01-01
-permalink: /posts/2012/08/blog-post-4/
+title: 'Module 1 - Week 1 -  Nội dung'
+date: 2025-06-01
+permalink: /posts/2025/06/blog-post-1/
 tags:
-  - cool posts
-  - category1
-  - category2
+  - for-loop
+  - while-loop
+  - if-elif
+  - def
 ---
 
-This post will show up by default. To disable scheduling of future posts, edit `config.yml` and set `future: false`. 
+Tóm tắt: for-loop, while-loop, if-elif, def. 
+
+---
+
+# A. Định nghĩa, Mục đích, ứng dụng, ví dụ - Yến
+
+---
+
+# B. Công thức (nếu có) - Tú
+
+---
+
+## 1.2.1. Vòng lặp For:
+
+Code example
+
+## 1.2.2 While loop
+
+Code example
+
+### 1.2.3. If, elif
+
+Code example
+
+## 1.2.4. Def
+
+Code example
+
+---
+
+# C. Kiến thức mở rộng - Tú/ Yến (mỗi người 1 cái)
+
+---
+
+# D. Quiz (gõ quiz + đáp án)  - Tú/ Yến (mỗi người 3 quiz liên tục)
+
+---
