@@ -7,6 +7,8 @@ redirect_from:
   - /about.html
 ---
 
+
+======
 # 👩‍💻 About Me
 
 Hi! I'm **Dang Thi Hoang Yen** — an industrial engineer with a passion for data-driven decision-making, optimization, and sustainable systems design. I’m currently working in manufacturing excellence and pursuing research in operations research, predictive modeling, and supply chain optimization.
@@ -37,8 +39,6 @@ I regularly explore topics in:
 📫 **Let’s Connect**  
 - [LinkedIn](https://www.linkedin.com/in/yen-dang-0103/)  
 - [Email](mailto:yendang.dthy@gmail.com)  
-- [Portfolio or personal site if applicable]
-
 ---
 
 Thank you for visiting my GitHub!
