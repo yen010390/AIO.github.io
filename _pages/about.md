@@ -35,7 +35,6 @@ redirect_from:
 
 <div class="profile-container">
 
- ====== 
   <!-- Member 1 -->
   <div class="profile">
     <img src="/AIlearn.github.io/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang">
