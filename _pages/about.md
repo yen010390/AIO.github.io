@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "/-v Hello there, I'm Yen"
+title: "👋 Hello there, I'm Yen"
 author_profile: true
 redirect_from: 
   - /about/
@@ -8,34 +8,40 @@ redirect_from:
 ---
 
 
-<img src="/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang" style="max-width: 200px; border-radius: 50%;">
+#<img src="/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang" style="max-width: 200px; border-radius: 50%;">
 
-## 👩‍💻 Thi Hoang Yen Dang
+# 👩‍💻 About Me
 
-Hello! I’m a passionate developer with a strong interest in technology, learning, and building projects that make a difference.
+Hi! I'm **Dang Thi Hoang Yen** — an industrial engineer with a passion for data-driven decision-making, optimization, and sustainable systems design. I’m currently working in manufacturing excellence and pursuing research in operations research, predictive modeling, and supply chain optimization.
 
-### 🌱 Interests
+🎓 **Academic Background**  
+- M.Sc. in Global Production Engineering – TU Berlin / Vietnam-Germany University (DAAD Scholar)  
+- B.Sc. in Industrial Management – Ho Chi Minh City University of Technology  
+- Ongoing learning in AI, Operations Research, and Data Science via online platforms (Coursera, edX)
 
-- Artificial Intelligence
-- Web Development
-- Educational Technology
-- Data Science & Visualization
+🛠️ **Professional Interests**  
+- Operations Research & Optimization  
+- Data Engineering & Analytics  
+- Sustainable Manufacturing Systems  
+- Machine Learning for Industrial Applications  
+- Circular Economy & Reverse Logistics
 
-### 🧠 Skills
+📌 **Current Focus**  
+I'm applying to Ph.D. and master's programs in data science to further strengthen my skills in Operations Research, Stochastic Processes, and technical areas, particularly in optimization under uncertainty. My current research interest:  
+> *“Applying Operations Research Theory to Hierarchical Planning Under Demand Uncertainty in Material Flow and Production.”*
 
-- **Languages**: Python, JavaScript, HTML/CSS
-- **Tools**: Git, VSCode, Jupyter, Figma
-- **Frameworks**: React, Flask, Jekyll
+🌱 **Always Learning**  
+I regularly explore topics in:
+- Python (NumPy, Pandas, SciPy)
+- Mathematical modeling
+- Simulation & decision analytics
+- Supply chain modeling
 
-### 💼 Projects
-
-I love exploring new ideas through hands-on projects. Visit the [Projects](/projects/) section to see what I’ve been working on.
-
-### 📬 Contact
-
-- 📧 Email: [yendang.dthy@gmail.com](mailto:yendang.dthy@gmail.com)
-- 🌐 GitHub: [@yen010390](https://github.com/yen010390)
+📫 **Let’s Connect**  
+- [LinkedIn](https://www.linkedin.com/in/yen-dang-0103/)  
+- [Email](mailto:yendang.dthy@gmail.com)  
+- [Portfolio or personal site if applicable]
 
 ---
 
-Thank you for visiting my site. I hope you find something interesting here!
+Thank you for visiting my GitHub!
