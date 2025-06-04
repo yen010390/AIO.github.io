@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "👋 Hello there, we are on the processing... learning AI"
+title: "👋 AI Learning"
 author_profile: true
 redirect_from: 
   - /about/
@@ -31,7 +31,8 @@ redirect_from:
 </style>
 
 <div class="profile-container">
-
+👋 Hello there, we are on the processing... learning AI
+  
   <!-- Member 1 -->
   <div class="profile">
     <img src="/AIlearn.github.io/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang">
