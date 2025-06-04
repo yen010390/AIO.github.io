@@ -6,7 +6,7 @@ layout: single
 author_profile: true
 ---
 
-Tóm tắt: Content of Module, Link 
+Summary: Content of Module, Link 
 
 ---
 
