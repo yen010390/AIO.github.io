@@ -1,5 +1,5 @@
 ---
-title: "AI Learning Path 📘"
+title: "📘 AI Learning Path"
 date: 2025-05-31
 permalink: /learning-path/
 layout: single
