@@ -7,9 +7,6 @@ redirect_from:
   - /about.html
 ---
 
-
-#<img src="/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang" style="max-width: 200px; border-radius: 50%;">
-
 # 👩‍💻 About Me
 
 Hi! I'm **Dang Thi Hoang Yen** — an industrial engineer with a passion for data-driven decision-making, optimization, and sustainable systems design. I’m currently working in manufacturing excellence and pursuing research in operations research, predictive modeling, and supply chain optimization.
