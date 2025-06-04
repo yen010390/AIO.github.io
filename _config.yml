@@ -22,7 +22,7 @@ baseurl                  : "/AIO.github.io" # the subpath of your site, e.g. "/b
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : https://yen010390.github.io/AIlearn.github.io/images/profile-Tu.png
+  avatar           : https://yen010390.github.io/AIO.github.io/images/profile-Tu.png
   name             : "Yen Dang & Tu Tran"
   pronouns         : "she/her"  
   bio              : "We graduated Master's Degree at TU Berlin (Top 160 Uni in the world) together and keep curious about AI."
