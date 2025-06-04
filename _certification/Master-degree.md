@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Graduate Master's Degree at TU Berlin"
-excerpt: "We graduated at TU Berlin <br/><img src='/images/Thesis-TUB.jpg'>"
+excerpt: "We graduated at TU Berlin>"
 collection: certification
 permalink: /tub-graduate/
 ---
