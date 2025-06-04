@@ -40,7 +40,7 @@ redirect_from:
 
   <!-- Member 1 -->
   <div class="profile">
-    <img src="/AIlearn.github.io/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang">
+    <img src="/AIO.github.io/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang">
     <h2>Thi Hoang Yen Dang</h2>
     <p><strong>👋 Github:</strong> <a href="https://github.com/yen010390" target="_blank" rel="noopener noreferrer">https://github.com/yen010390</a></p>
     <p><strong>⚙ About Me:</strong> Passionate in LEAN 6Sigma, Operation Research and problem-solving.</p>
@@ -57,7 +57,7 @@ redirect_from:
 
   <!-- Member 2 -->
   <div class="profile">
-    <img src="/AIlearn.github.io/images/profile-Tu1.jpg" alt="Thi My Tu Tran">
+    <img src="/AIO.github.io/images/profile-Tu1.jpg" alt="Thi My Tu Tran">
     <h2>Thi My Tu Tran</h2>
     <p><strong>👋 Github:</strong> <a href="https://github.com/daria-tran" target="_blank" rel="noopener noreferrer">https://github.com/daria-tran</a></p>
     <p><strong>⚙ About Me:</strong> A curious technologist passionate about coding, design, and education technology.</p>
