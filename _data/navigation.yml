@@ -30,7 +30,7 @@ main:
     url: /certification/
     
   - title: "CV"
-      url: /cv/
+    url: /cv/
     # url: /files/Yen Dang-CV-04062025.pdf
     
   # - title: "CV"
