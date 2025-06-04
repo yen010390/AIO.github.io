@@ -29,8 +29,9 @@ author:
   location         : "Germany & Vietnam"
   employer         : "TU Berlin"
   uri              : # URL
-  email            : "Yen: yendang.dthy@gmail.com" 
-  email            : "Tu: mytu2911@gmail.com "
+  email:
+    Yen: "yendang.dthy@gmail.com"
+    Tu: "mytu2911@gmail.com"
 
   # Academic websites
   # academia         : # URL
