@@ -1,8 +1,12 @@
 ---
 title: "AI Learning Path 📘"
+date: 2025-05-31
 permalink: /learning-path/
 layout: single
 author_profile: true
+---
+
+Tóm tắt: Content of Module, Link 
 ---
 
 ## 🎓 Welcome to the AI Learning Path
