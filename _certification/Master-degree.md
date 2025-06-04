@@ -7,5 +7,5 @@ permalink: /tub-graduate/
 ---
 
 <p align="center">
-  <img src="https://yen010390.github.io/AIlearn.github.io/images/Thesis-TUB.jpg" alt="Graduation at TU Berlin" width="500"/>
+  <img src="https://yen010390.github.io/AIO.github.io/images/Thesis-TUB.jpg" alt="Graduation at TU Berlin" width="500"/>
 </p>
