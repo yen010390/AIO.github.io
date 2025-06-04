@@ -9,9 +9,9 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "Yen's Homepage"
+title                    : "AI-Learn Homepage"
 title_separator          : "-"
-name                     : &name "Dang Thi Hoang Yen"
+name                     : &name "Yen Dang & Daria Tran"
 description              : &description "personal description"
 url                      : https://yen010390.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "/AIlearn.github.io" # the subpath of your site, e.g. "/blog"
@@ -26,7 +26,7 @@ author:
   #"img src="{{yen010390.github.io/AIlearn.github.io/images/profile-Yen.jpg"
   name             : "Dang Thi Hoang Yen"
   pronouns         : "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "We graduated Master Degree at TU Berlin (Top 160 Uni in the world) together and keep curious about AI"
   location         : "Berlin, Germany"
   employer         : "TU Berlin"
   uri              : # URL
