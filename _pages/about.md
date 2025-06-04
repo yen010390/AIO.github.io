@@ -44,8 +44,8 @@ redirect_from:
     <p><strong>💡 Interests:</strong> AI, Operation Research, Travelling</p>
     <p><strong>💪 Personal Goal:</strong> Build practical discrete optimization/ ML solutions to pursuit PhD.</p>
     <p><strong>🏫 Education:</strong><br> 
-      Bachelor - Industrial Management at Ho Chi Minh University of Technology <br>
-      Master of Science - Global Production Engineering @ TU Berlin.</p>
+      - Bachelor - Industrial Management @ Ho Chi Minh University of Technology <br>
+      - Master of Science - Global Production Engineering @ TU Berlin.</p>
     <p><strong>💰 Experience:</strong><br>
       - Manufacturing Excellent Engineer at Colgate Palomive (VN) <br> 
       - Intern Process Optimization at Quantron AG (DE).</p>
@@ -61,8 +61,8 @@ redirect_from:
     <p><strong>💡Interests:</strong> Language, History, Designer, Robotics</p>
     <p><strong>💪 Personal Goal:</strong> AI in Audio for Language Learning.</p>
     <p><strong>🏫 Education:</strong><br> 
-      Bachelor of Engineering - Mechanical Engineer at Ho Chi Minh University of Technology <br>
-      Master of Science - Global Production Engineering @ TU Berlin.</p>
+      - Bachelor of Engineering - Mechanical Engineer @ Ho Chi Minh University of Technology <br>
+      - Master of Science - Global Production Engineering @ TU Berlin.</p>
     <p><strong>💰 Experience:</strong><br> 
       - Designer at X1 <br>
       - Project Manager at X2.</p>
