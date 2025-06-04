@@ -2,7 +2,9 @@
 layout: default
 title: "Tổng hợp Quiz"
 permalink: /quiz/
+collection: quiz
 ---
+
 
 # M01W01D03
 
