@@ -36,22 +36,22 @@ redirect_from:
   <div class="profile">
     <img src="/AIlearn.github.io/images/profile-Yen.jpg" alt="Thi Hoang Yen Dang">
     <h2>Thi Hoang Yen Dang</h2>
-    <p><strong>About Me:</strong> Passionate developer and AI enthusiast focused on creative learning and problem-solving.</p>
-    <p><strong>Interests:</strong> AI, Machine Learning, Web Development, Data Science</p>
-    <p><strong>Personal Goal:</strong> Build practical AI solutions to enhance everyday life and education.</p>
-    <p><strong>Education:</strong> Bachelor of Computer Science - Vietnam National University</p>
-    <p><strong>Experience:</strong> Software Engineer Intern at XYZ Corp, Contributor to open-source education projects.</p>
+    <p><strong>⚙ About Me:</strong> Passionate LEAN, Operation Research and problem-solving.</p>
+    <p><strong>💡 Interests:</strong> AI, Data Science</p>
+    <p><strong>💪 Personal Goal:</strong> Build practical discrete optimization/ ML solutions to pursuit PhD.</p>
+    <p><strong>🏫 Education:</strong> Master of Science - Global Production Engineering @ TU Berlin</p>
+    <p><strong>💰 Experience:</strong> Manufacturing Excellent Engineer at Colgate Palomive (VN), Intern Process Optimization at Quantron AG (DE).</p>
   </div>
 
   <!-- Member 2 -->
   <div class="profile">
-    <img src="/AIlearn.github.io/images/profile-Partner.jpg" alt="Tu Tran">
+    <img src="/AIlearn.github.io/images/profile-Tu.jpg" alt="Tu Tran">
     <h2>Tu Tran</h2>
-    <p><strong>About Me:</strong> A curious technologist passionate about coding, design, and education technology.</p>
-    <p><strong>Interests:</strong> Frontend development, UX/UI, E-learning platforms, Robotics</p>
-    <p><strong>Personal Goal:</strong> Bridge technology and education through engaging tools.</p>
-    <p><strong>Education:</strong> Bachelor of Information Technology - University of Technology</p>
-    <p><strong>Experience:</strong> Freelance Web Developer, Designer at EduWeb Startups.</p>
+    <p><strong>⚙ About Me:</strong> A curious technologist passionate about coding, design, and education technology.</p>
+    <p><strong>💡Interests:</strong> Frontend development, UX/UI, E-learning platforms, Robotics</p>
+    <p><strong>💪 Personal Goal:</strong> AI in Audio for Language Learning.</p>
+    <p><strong>🏫 Education:</strong> Master of Science - Global Production Engineering @ TU Berlin</p>
+    <p><strong>💰 Experience:</strong> Designer at EduWeb Startups.</p>
   </div>
 
 </div>
