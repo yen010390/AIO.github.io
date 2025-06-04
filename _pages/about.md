@@ -30,7 +30,9 @@ redirect_from:
 }
 </style>
 
-<p>Hello there, we are on the processing... learning AI</p>
+<p><br> 
+  Hello there, we are on the processing... learning AI!<br> 
+  Our team has 2 members. Let's introduce ourselves.</p>
 <hr />
 
 <div class="profile-container">
