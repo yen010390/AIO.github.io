@@ -30,8 +30,8 @@ author:
   employer         : "TU Berlin"
   uri              : # URL
   email:
-    Yen: "yendang.dthy@gmail.com"
-    Tu: "mytu2911@gmail.com"
+  - "Yen: yendang.dthy@gmail.com"
+  - "Tu: mytu2911@gmail.com"
 
   # Academic websites
   # academia         : # URL
