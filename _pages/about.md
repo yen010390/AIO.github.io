@@ -71,8 +71,20 @@ redirect_from:
       - Project Manager at X2.</p>
   </div>
 
-</div>
 
+<hr />
+
+<h2>🎯 About This Website</h2>
+<p>This website is created to document our journey in learning Artificial Intelligence, from foundational knowledge to applied projects. You can explore different sections below:</p>
+
+<ul>
+  <li><a href="/AIlearn.github.io/posts/">📝 Blog Posts</a> – Insights, lessons, and reflections on AI topics.</li>
+  <li><a href="/AIlearn.github.io/quiz/">❓ Quizzes</a> – Test your knowledge with interactive AI quizzes.</li>
+  <li><a href="/AIlearn.github.io/project/">🛠 Projects</a> – Hands-on projects showcasing what we've built.</li>
+  <li><a href="/AIlearn.github.io/certification/">📜 Certifications</a> – Our achievements and completed courses.</li>
+</ul>
+
+</div>
 ---
 
 Thank you for visiting my GitHub!
