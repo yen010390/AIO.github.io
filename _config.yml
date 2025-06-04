@@ -11,7 +11,7 @@ locale                   : "en-US"
 site_theme               : "default"
 title                    : "AI-Learn Homepage"
 title_separator          : "-"
-name                     : &name "Yen Dang & Daria Tran"
+name                     : &name "Yen Dang & Tu Tran"
 description              : &description "personal description"
 url                      : https://yen010390.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "/AIlearn.github.io" # the subpath of your site, e.g. "/blog"
@@ -57,7 +57,7 @@ author:
   # facebook         : # Username
   # linkedin         : # Username
 
-# # Publication Category - The following the list of publication categories and their headings
+# Publication Category - The following the list of publication categories and their headings
 # publication_category:
 #   books:
 #     title: 'Books'
