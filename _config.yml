@@ -329,7 +329,7 @@ timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 search:
   enabled: true
-  engine: lunr
+  exclude: [archive.md, about.md]
 
 # Plugins
 plugins:
