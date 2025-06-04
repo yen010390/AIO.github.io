@@ -327,6 +327,9 @@ permalink: /:categories/:title/
 # paginate_path: /page:num/
 timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
+search:
+  enabled: true
+  engine: lunr
 
 # Plugins
 plugins:
@@ -336,6 +339,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-redirect-from
   - jemoji
+  - jekyll-search
 
 # Mimic GitHub Pages with --safe
 whitelist:
