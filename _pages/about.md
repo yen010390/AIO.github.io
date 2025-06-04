@@ -44,7 +44,7 @@ redirect_from:
       Master of Science - Global Production Engineering @ TU Berlin</p>
     <p><strong>💰 Experience:</strong><br>
       - Manufacturing Excellent Engineer at Colgate Palomive (VN) <br> 
-      - Intern Process Optimization at Quantron AG (DE).</p>
+      - Intern Process Optimization at Quantron AG (DE)</p>
   </div>
 
 
@@ -58,7 +58,9 @@ redirect_from:
     <p><strong>🏫 Education:</strong><br> 
       Bachelor of Engineering - Mechanical Engineer at Ho Chi Minh University of Technology <br>
       Master of Science - Global Production Engineering @ TU Berlin</p>
-    <p><strong>💰 Experience:</strong> Designer, Project Manager at XXXX Startups.</p>
+    <p><strong>💰 Experience:</strong><br> 
+      - Designer at X1 <br>
+      - Project Manager at X2</p>
   </div>
 
 </div>
