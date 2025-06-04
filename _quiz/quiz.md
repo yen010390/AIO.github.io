@@ -4,7 +4,7 @@ title: "Tổng hợp Quiz"
 permalink: /quiz/
 collection: quiz
 ---
-
+<div style="max-width: 900px; margin: auto; padding: 1rem;">
 
 # M01W01D03
 
@@ -21,6 +21,7 @@ collection: quiz
 | 9. Kết quả của đoạn mã sau là gì? | D. In ra: "Lớn hơn 3" |
 | 10. Trong Python, từ khóa else được dùng khi nào? | B. Khi điều kiện if sai |
 
+<br/>
 # M01W01D05
 
 | Câu hỏi | Đáp án |
@@ -35,3 +36,5 @@ collection: quiz
 | 8. Câu nào sau đây là đúng cú pháp để chọn cột "name" và "age" từ bảng "students"? | C. SELECT name, age FROM students; |
 | 9. Lệnh SQL nào sau đây được dùng để tạo bảng "employees" có cột "id" và "name"? | C. CREATE TABLE employees (id INT, name TEXT); |
 | 10. Đâu là cú pháp đúng để sắp xếp dữ liệu trong bảng "products" theo cột "price" giảm dần? | B. SELECT * FROM products ORDER BY price DESC; |
+
+</div>
