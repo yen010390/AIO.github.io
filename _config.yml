@@ -25,13 +25,13 @@ author:
   avatar           : https://yen010390.github.io/AIlearn.github.io/images/profile-Tu.png
   name             : "Yen Dang & Daria Tran"
   pronouns         : "she/her"  
-  bio              : "We graduated Master's Degree at TU Berlin (Top 160 Uni in the world) together and keep curious about AI"
+  bio              : "We graduated Master's Degree at TU Berlin (Top 160 Uni in the world) together and keep curious about AI."
   location         : "Germany & Vietnam"
   employer         : "TU Berlin"
   uri              : # URL
-  email:
-  - "Yen: yendang.dthy@gmail.com"
-  - "Tu: mytu2911@gmail.com"
+  # email:
+  # - "Yen: yendang.dthy@gmail.com"
+  # - "Tu: mytu2911@gmail.com"
 
   # Academic websites
   # academia         : # URL
