@@ -1,4 +1,3 @@
-======
 ---
 permalink: /
 title: "👋 Hello there, we are on the processing... learning AI"
