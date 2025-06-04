@@ -18,7 +18,7 @@ This guide presents a structured roadmap to master Artificial Intelligence, star
 
 ### 📌 Learning Modules
 
-| Module | Title | Link |
+| Module | Name of Module| Link |
 |--------|-------|------|
 | 1️⃣ | Fundamental Math and Programming | [Week 1](/posts/2025-06-01-Module1-Week1), [Week 2](/posts/2025-06-08-Module1-Week2), [Week 3](/posts/2025-06-15-Module1-Week3), [Week 4](/posts/2025-06-22-Module1-Week4)|
 | 2️⃣ | Advanced Math and Programming | [Module 2](/modules/module-2/) |
