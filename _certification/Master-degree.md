@@ -4,4 +4,6 @@ title: "Graduate Master's Degree at TU Berlin"
 permalink: /tub-graduate/
 ---
 
-![Graduation at TU Berlin](https://yen010390.github.io/AIlearn.github.io/images/Thesis-TUB.jpg)
+<p align="center">
+  <img src="https://yen010390.github.io/AIlearn.github.io/images/Thesis-TUB.jpg" alt="Graduation at TU Berlin" width="500"/>
+</p>
