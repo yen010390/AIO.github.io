@@ -46,7 +46,7 @@ redirect_from:
 
   <!-- Member 2 -->
   <div class="profile">
-    <img src="/AIlearn.github.io/images/profile-Partner.jpg" alt="Partner Name">
+    <img src="/AIlearn.github.io/images/profile-Partner.jpg" alt="Tu Tran">
     <h2>Nguyen Van B</h2>
     <p><strong>About Me:</strong> A curious technologist passionate about coding, design, and education technology.</p>
     <p><strong>Interests:</strong> Frontend development, UX/UI, E-learning platforms, Robotics</p>
