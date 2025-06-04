@@ -20,6 +20,9 @@ main:
   - title: "Blog Posts"
     url: /year-archive/
 
+  - title: "Quiz"
+    url: /quiz/
+
   - title: "Project"
     url: /project/
 
