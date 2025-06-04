@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Certification"
+title: "📜 Certification"
 permalink: /certification/
 author_profile: true
 ---
