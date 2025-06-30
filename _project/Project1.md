@@ -15,9 +15,7 @@ Mặc dù LLMs rất mạnh, chúng vẫn bị hạn chế về kiến thức ch
 
 ## 1. Giới thiệu
 - Các Mô hình Ngôn ngữ Lớn (LLMs) như ChatGPT có khả năng trả lời linh hoạt nhưng bị giới hạn bởi dữ liệu huấn luyện, nên không xử lý tốt thông tin mới hoặc cá nhân hóa.
-
 - Để khắc phục, kiến trúc Retrieval-Augmented Generation (RAG) cho phép LLM truy xuất thông tin từ nguồn ngoài (như PDF, cơ sở dữ liệu) trước khi tạo câu trả lời, giúp kết quả chính xác và phù hợp hơn.
-
 - Mục tiêu dự án là xây dựng chatbot ứng dụng RAG, hỗ trợ học viên khóa AIO hỏi – đáp trực tiếp dựa trên nội dung tài liệu bài giảng.
 
 ## 2. Phương pháp luận
@@ -26,15 +24,6 @@ Hệ thống được xây dựng dựa trên kiến trúc RAG tiêu chuẩn, ba
 ![Quy trình RAG tổng quan](/AIO.github.io/images/M01/M01_RAG_1.png)
 
 Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
-
-
-![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
-
-Hình 2: Sơ đồ bước thực hiện xây dựng vector database.
-
-![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
-
-Hình 3: Sơ đồ về Semantic Chunking.
 
 
 ### 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
@@ -55,6 +44,10 @@ documents = loader.load()
 <details>
 <summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa:  <code>SemanticChunker</code></summary>
 
+![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
+
+Hình 2: Sơ đồ về Semantic Chunking.
+
 
 <pre><code class="language-python">
 from langchain.text_splitter import SemanticChunker
@@ -72,6 +65,10 @@ semantic_splitter = SemanticChunker(
 
 <details>
 <summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học:  <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
+
+![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
+
+Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
 
 <pre><code class="language-python">
@@ -170,25 +167,16 @@ def load_llm():
 ## 3. Thực hiện
 
 Ứng dụng được xây dựng bằng Python với giao diện người dùng tương tác được tạo bởi thư viện Streamlit. Các thư viện chính được sử dụng bao gồm:
-
 - Streamlit: Xây dựng giao diện web cho ứng dụng.
-
 - LangChain: Framework chính để kết nối các thành phần trong chuỗi RAG.
-
 - Hugging Face Transformers: Tải và vận hành các mô hình embedding và LLM.
-
 - ChromaDB: Xây dựng cơ sở dữ liệu vector.
-
 - PyPDF: Xử lý file PDF.
 
 Giao diện ứng dụng cho phép người dùng:
-
 - Tải lên một file tài liệu PDF.
-
 - Nhấn nút "Xử lý PDF" để khởi tạo quy trình lập chỉ mục.
-
 - Nhập câu hỏi vào một khung chat.
-
 - Nhận câu trả lời được tạo ra bởi hệ thống.
 
 Để tối ưu hóa trải nghiệm, các mô hình nặng (embedding và LLM) được cache lại bằng @st.cache_resource của Streamlit, đảm bảo chúng chỉ cần tải một lần duy nhất khi khởi động ứng dụng
