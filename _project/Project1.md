@@ -6,6 +6,7 @@ collection: project
 
 # Báo cáo dự án
 Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
+
 Ngày: 30 tháng 6 năm 2025
 
 ## Tóm tắt
