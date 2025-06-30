@@ -31,19 +31,19 @@ Hình 1: Sơ đồ tổng quan về kiến trúc RAG được sử dụng trong 
 <details>
 <summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF <code>PyPDFLoader</code></summary>
 
-```python
+<pre><code class="language-python">
 from langchain.document_loaders import PyPDFLoader
 
 # Tải file PDF và trích xuất văn bản
 loader = PyPDFLoader(tmp_file_path)
 documents = loader.load()
-```
+</code></pre>
 </details>
 
 <details>
 <summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa <code>SemanticChunker</code></summary>
 
-```python
+<pre><code class="language-python">
 from langchain.text_splitter import SemanticChunker
 
 semantic_splitter = SemanticChunker(
@@ -54,24 +54,24 @@ semantic_splitter = SemanticChunker(
     min_chunk_size = 500,
     add_start_index = True
 )
-```
+</code></pre>
 </details>
 
 <details>
 <summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
 
-```python
+<pre><code class="language-python">
 from langchain.embeddings import HuggingFaceEmbeddings
 
 def load_embeddings():
     return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
-```
+</code></pre>
 </details>
 
 <details>
-<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
+<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh <code>ChromaDB</code></summary>
 
-```python
+<pre><code class="language-python">
 from langchain.vectorstores import Chroma
 
 # Phân đoạn và lưu trữ vector
@@ -82,9 +82,8 @@ retriever = vector_db.as_retriever()
 # Tải prompt mẫu từ hub
 from langchain import hub
 prompt = hub.pull("rlm/rag-prompt")
-```
+</code></pre>
 </details>
-
 ---
 
 ### 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
