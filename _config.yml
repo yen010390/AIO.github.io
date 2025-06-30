@@ -9,9 +9,9 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "AIO Homepage"
+title                    : "MIX002 Homepage"
 title_separator          : "-"
-name                     : &name "Yen Dang & Tu Tran"
+name                     : &name "MIX002"
 description              : &description "personal description"
 url                      : https://yen010390.github.io # the base hostname & protocol for your site e.g. "https://[your GitHub username].github.io" or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "/AIO.github.io" # the subpath of your site, e.g. "/blog"
@@ -22,16 +22,15 @@ baseurl                  : "/AIO.github.io" # the subpath of your site, e.g. "/b
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : https://yen010390.github.io/AIO.github.io/images/profile-Tu.png
-  name             : "Yen Dang & Tu Tran"
-  pronouns         : "she/her"  
-  bio              : "Đôi bạn nhanh nhảu tự lập web khi chưa tìm được đồng đội ^^. Nay đã tìm được Group!"
+  avatar           : https://yen010390.github.io/AIO.github.io/images/profile/profile-Group.webp
+  name             : "MIX002"
+  pronouns         : "We/ Our"  
+  bio              : "Nhóm MIX002"
   location         : "Vietnam"
-  # employer         : "TU Berlin"
+  employer         : "AIO Vietnam"
   uri              : # URL
-  # email:
-  # - "Yen: yendang.dthy@gmail.com"
-  # - "Tu: mytu2911@gmail.com"
+  email            :"conqueraio@gmail.com"
+
 
   # Academic websites
   # academia         : # URL
