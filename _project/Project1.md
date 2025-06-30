@@ -185,7 +185,8 @@ Giao diện ứng dụng cho phép người dùng:
 
 Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
 
-[Xem file code `/AIO.github.io/files/M01_rag_chatbot_cai_tien.py`](./files/M01_rag_chatbot.py)
+[👉 Xem file code](/AIO.github.io/files/M01_rag_chatbot.py)
+
 
 ## 5. Mở rộng nhân cao
 
@@ -208,7 +209,7 @@ Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 
 ###  5.3 Code nâng cao
-[Xem file code cải tiến `/AIO.github.io/files/M01_rag_chatbot_cai_tien.py`](./files/M01_rag_chatbot_cai_tien.py)
+[👉 Xem file code cải tiến](/AIO.github.io/files/M01_rag_chatbot_cai_tien.py)
 
 
 Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùng nâng cao.
