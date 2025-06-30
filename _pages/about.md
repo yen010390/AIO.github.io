@@ -70,7 +70,7 @@ redirect_from:
   
   <!-- Member 5 -->
   <div class="profile">
-    <img src="/AIO.github.io/images/profile/profile-Yen.jpg" alt="Trần Thị Mỹ Tú">
+    <img src="/AIO.github.io/images/profile/profile-Yen.jpg" alt="Đặng Thị Hoàng Yến">
     <h2>Đặng Thị Hoàng Yến</h2>
     <p><strong>👋 Github:</strong> <a href="https://github.com/yen010390" target="_blank" rel="noopener noreferrer">https://github.com/yen010390</a></p>
   </div>
