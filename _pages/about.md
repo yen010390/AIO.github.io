@@ -77,7 +77,7 @@ redirect_from:
   <div class="profile">
     <img src="/AIO.github.io/images/profile/profile-Hung.jpg" alt="Đoàn Tấn Hưng" onerror="this.onerror=null;this.src='https://placehold.co/120x120/EFEFEF/333333?text=Hưng';">
     <h2>Đoàn Tấn Hưng</h2>
-    <p><strong>👋 Github:</strong> <a href="https://github.com/hdaio25" target="_blank" rel="noopener noreferrer">hdaio25</a></p>
+    <p><strong>👋 Github:</strong> <a href="https://github.com/hung-doan" target="_blank" rel="noopener noreferrer">hung-doan</a></p>
   </div>
 
   <!-- Member 3 -->
