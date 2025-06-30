@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Introduction"
+title: "Giới thiệu"
 author_profile: true
 redirect_from: 
   - /about/
@@ -70,20 +70,20 @@ redirect_from:
   <div class="profile">
     <img src="/AIO.github.io/images/profile/profile-Anh.jpg" alt="Nguyễn Tuấn Anh" onerror="this.onerror=null;this.src='https://placehold.co/120x120/EFEFEF/333333?text=Anh';">
     <h2>Nguyễn Tuấn Anh</h2>
-    <p><strong>👋 Github:</strong> <a href="https://github.com/yen010390" target="_blank" rel="noopener noreferrer">yen010390</a></p>
+    <p><strong>👋 Github:</strong> <a href="https://github.com/xxx" target="_blank" rel="noopener noreferrer">xxx</a></p>
   </div>
 
   <!-- Member 2 -->
   <div class="profile">
-    <img src="/AIO.github.io/images/profile/profile-Hung.jpg" alt="Hưng Đoàn" onerror="this.onerror=null;this.src='https://placehold.co/120x120/EFEFEF/333333?text=Hưng';">
-    <h2>Hưng Đoàn</h2>
+    <img src="/AIO.github.io/images/profile/profile-Hung.jpg" alt="Đoàn Tấn Hưng" onerror="this.onerror=null;this.src='https://placehold.co/120x120/EFEFEF/333333?text=Hưng';">
+    <h2>Đoàn Tấn Hưng</h2>
     <p><strong>👋 Github:</strong> <a href="https://github.com/hdaio25" target="_blank" rel="noopener noreferrer">hdaio25</a></p>
   </div>
 
   <!-- Member 3 -->
   <div class="profile">
-    <img src="/AIO.github.io/images/profile/profile-Ngoc.jpg" alt="Ngọc Huyền" onerror="this.onerror=null;this.src='https://placehold.co/120x120/EFEFEF/333333?text=Ngọc';">
-    <h2>Ngọc Huyền</h2>
+    <img src="/AIO.github.io/images/profile/profile-Ngoc.jpg" alt="Hồ Thị Ngọc Huyền" onerror="this.onerror=null;this.src='https://placehold.co/120x120/EFEFEF/333333?text=Ngọc';">
+    <h2>Hồ Thị Ngọc Huyền</h2>
     <p><strong>👋 Github:</strong> <a href="https://github.com/ngochuyen2723" target="_blank" rel="noopener noreferrer">ngochuyen2723</a></p>
   </div>
 
