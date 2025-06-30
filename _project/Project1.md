@@ -208,7 +208,7 @@ Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 ### 5.2.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
 <details>
-<summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại (build_prompt_ragprompt_withhistory_en) </summary>
+<summary>5.2.1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại (build_prompt_ragprompt_withhistory_en) </summary>
 <pre><code class="language-python">
 #Hàm build_prompt_ragprompt_withhistory_en
 def build_prompt_ragprompt_withhistory_en():
@@ -234,7 +234,7 @@ def build_prompt_ragprompt_withhistory_en():
 
 
 <details>
-<summary>1.2. Hàm định dạng và truy xuất lịch sử chat (retrieve_chat_history, chat_history)</summary>
+<summary>5.2.1.2. Hàm định dạng và truy xuất lịch sử chat (retrieve_chat_history, chat_history)</summary>
 <pre><code class="language-python">
 #Hàm retrieve_chat_history, format_history
 def retrieve_chat_history():
@@ -251,7 +251,7 @@ def format_history(histories):
 </details>
 
 <details>
-<summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat</summary>
+<summary>5.2.1.3. Cập nhật RAG Chain để xử lý lịch sử chat (process_pdf_updated_chain(retriever, llm)) </summary>
 <pre><code class="language-python">
 #Hàm process_pdf_updated_chain(retriever, llm)
 def process_pdf_updated_chain(retriever, llm):
@@ -272,7 +272,7 @@ def process_pdf_updated_chain(retriever, llm):
 
 
 <details>
-<summary>1.4. Cập nhật cách gọi RAG chain</summary>
+<summary>5.2.1.4. Cập nhật cách gọi RAG chain (main_updated_invoke) </summary>
 <pre><code class="language-python">
 #Hàm main_updated_invoke
 def main_updated_invoke(user_input):
