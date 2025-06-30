@@ -42,6 +42,7 @@ Hình 3: Sơ đồ về Semantic Chunking.
 <details>
 <summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF:  <code>PyPDFLoader</code></summary>
 
+
 <pre><code class="language-python">
 from langchain.document_loaders import PyPDFLoader
 
@@ -53,6 +54,7 @@ documents = loader.load()
 
 <details>
 <summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa:  <code>SemanticChunker</code></summary>
+
 
 <pre><code class="language-python">
 from langchain.text_splitter import SemanticChunker
@@ -71,6 +73,7 @@ semantic_splitter = SemanticChunker(
 <details>
 <summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học:  <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
 
+
 <pre><code class="language-python">
 from langchain.embeddings import HuggingFaceEmbeddings
 
@@ -81,6 +84,7 @@ def load_embeddings():
 
 <details>
 <summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh:  <code>ChromaDB</code></summary>
+
 
 <pre><code class="language-python">
 from langchain.vectorstores import Chroma
@@ -100,7 +104,8 @@ prompt = hub.pull("rlm/rag-prompt")
 ### 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
 <details>
-<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector  <code>ChromaDB</code></summary>
+<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector:  <code>ChromaDB</code></summary>
+
 
 <pre><code class="language-python">
 @st.cache_resource
@@ -110,7 +115,8 @@ def load_embeddings():
 </details>
 
 <details>
-<summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu   <code>ChromaDB</code></summary>
+<summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu:   <code>ChromaDB</code></summary>
+
 
 <pre><code class="language-python">
 @st.cache_resource
@@ -121,8 +127,9 @@ def load_embeddings():
 
 
 <details>
-<summary>Bước 3: Tăng cường – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh   <code>Mẫu Prompt: rlm/rag-prompt </code></summary>
+<summary>Bước 3: Tăng cường – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh:   <code>Mẫu Prompt: rlm/rag-prompt </code></summary>
 
+    
 <pre><code class="language-python">
  rlm/rag-prompt
 </code></pre>
@@ -130,7 +137,8 @@ def load_embeddings():
 
 
 <details>
-<summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng   <code>lmsys/vicuna-7b-v1.5  </code></summary>
+<summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng:   <code>lmsys/vicuna-7b-v1.5  </code></summary>
+
 
 <pre><code class="language-python">
 def load_llm():
@@ -187,7 +195,7 @@ Giao diện ứng dụng cho phép người dùng:
 
 ## 4. Kết quả
 
-Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
+Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
 
 [Xem file code `/AIO.github.io/files/M01_rag_chatbot_cai_tien.py`](./files/M01_rag_chatbot.py)
 
@@ -211,13 +219,16 @@ Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 | **Thư viện phụ thuộc**      | Ít thư viện hơn.                                                                                                            | Thêm thư viện như `chromadb`, `ChatPromptTemplate`, `itemgetter` và module `utils` tùy chỉnh.                                         |
 
 
-###  5.3 Code sau khi cải tiến
+###  5.3 Code nâng cao
 [Xem file code cải tiến `/AIO.github.io/files/M01_rag_chatbot_cai_tien.py`](./files/M01_rag_chatbot_cai_tien.py)
 
 
+Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùng nâng cao.
+
 #### 5.3.1 NÂNG CẤP CỐT LÕI: GHI NHỚ LỊCH SỬ HỘI THOẠI (CONVERSATION MEMORY) 
 <details>
-<summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại <code>build_prompt_ragprompt_withhistory_en</code></summary>
+<summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại: <code>build_prompt_ragprompt_withhistory_en</code></summary>
+
 
 <pre><code class="language-python">
 def build_prompt_ragprompt_withhistory_en():
@@ -243,7 +254,8 @@ def build_prompt_ragprompt_withhistory_en():
 
 
 <details>
-<summary>1.2. Hàm định dạng và truy xuất lịch sử chat <code>retrieve_chat_history, format_history</code></summary>
+<summary>1.2. Hàm định dạng và truy xuất lịch sử chat: <code>retrieve_chat_history, format_history</code></summary>
+
 
 <pre><code class="language-python">
 def retrieve_chat_history():
@@ -260,7 +272,8 @@ def format_history(histories):
 </details>
 
 <details>
-<summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat <code>process_pdf_updated_chain(retriever, llm)</code></summary>
+<summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat: <code>process_pdf_updated_chain(retriever, llm)</code></summary>
+
 
 <pre><code class="language-python">
 def process_pdf_updated_chain(retriever, llm):
@@ -281,7 +294,8 @@ def process_pdf_updated_chain(retriever, llm):
 
 
 <details>
-<summary>1.4. Cập nhật cách gọi RAG chain <code>main_updated_invoke</code></summary>
+<summary>1.4. Cập nhật cách gọi RAG chain: <code>main_updated_invoke</code></summary>
+
 
 <pre><code class="language-python">
 def main_updated_invoke(user_input):
@@ -294,7 +308,8 @@ def main_updated_invoke(user_input):
 
 #### 5.3.2 QUẢN LÝ VECTOR DB NÂNG CAO
 <details>
-<summary>Quản lý Vector DB nâng cao <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
+<summary>Quản lý Vector DB nâng cao: <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
+
     
 <pre><code class="language-python">
 def get_chroma_client(allow_reset=False):
@@ -315,8 +330,9 @@ def process_pdf_updated_db_handling():
 
 #### 5.3.3. GỠ LỖI (DEBUGGING) VỚI LOGGER
 <details>
-<summary>Gỡ lỗi (Debugging) với Logger <code>format_docs_with_logging</code></summary>
-    
+<summary>Gỡ lỗi (Debugging) với Logger: <code>format_docs_with_logging</code></summary>
+
+
 <pre><code class="language-python">
 def format_docs_with_logging(docs):
     logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
@@ -335,8 +351,9 @@ def format_docs_with_logging(docs):
 
 #### 5.3.4. CẢI TIẾN GIAO DIỆN NGƯỜI DÙNG (UI)
 <details>
-<summary>Cải tiến giao diện người dùng <code>main_sidebar_enhancements</code></summary>
-    
+<summary>Cải tiến giao diện người dùng: <code>main_sidebar_enhancements</code></summary>
+
+
 <pre><code class="language-python">
 def main_sidebar_enhancements():
     with st.sidebar:
