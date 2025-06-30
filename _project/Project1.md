@@ -285,9 +285,8 @@ def main_updated_invoke(user_input):
 
 ### 5.2.2 Quản lý Vector DB nâng cao
 <details>
-<summary>Quản lý Vector DB nâng cao (get_chroma_client, process_pdf_updated_db_handling) </summary>
+<summary>Xây dựng hàm get_chroma_client, process_pdf_updated_db_handling </summary>
 <pre><code class="language-python">
-#Hàm get_chroma_client, process_pdf_updated_db_handling
 def get_chroma_client(allow_reset=False):
     """Get a Chroma client for vector database operations."""
     return chromadb.PersistentClient(settings=chromadb.Settings(allow_reset=allow_reset))
@@ -306,10 +305,9 @@ def process_pdf_updated_db_handling():
 
 ### 5.2.3. Gỡ lỗi (Debugging) với Logger
 <details>
-<summary>Gỡ lỗi (Debugging) với Logger (format_docs_with_logging) </summary>
+<summary>Xây dựng hàm format_docs_with_logging </summary>
 
 <pre><code class="language-python">
-#Hàm format_docs_with_logging
 def format_docs_with_logging(docs):
     logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
     for i, doc in enumerate(docs):
@@ -327,9 +325,8 @@ def format_docs_with_logging(docs):
 
 ### 5.2.4. Cải tiến giao diện người dùng (UI)
 <details>
-<summary>Cải tiến giao diện người dùng (main_sidebar_enhancements) </summary>
+<summary>Xây dựng hàm  main_sidebar_enhancements </summary>
 <pre><code class="language-python">
-#Hàm main_sidebar_enhancements
 def main_sidebar_enhancements():
     with st.sidebar:
         st.logo("./assets/logo.png")
@@ -343,6 +340,7 @@ def main_sidebar_enhancements():
 
 
 # 6. Kết luận
+
 - Dự án đã xây dựng thành công một chatbot ứng dụng kiến trúc RAG, có khả năng hỏi đáp trực tiếp và hiệu quả với các tài liệu PDF chuyên biệt, phù hợp với ngữ cảnh bằng cách kết hợp truy vấn thông tin của cơ sở dữ liệu vector và khả năng tạo sinh ngôn ngữ của LLMs.
 - Chất lượng câu trả lời của hệ thống phụ thuộc hoàn toàn vào hiệu quả của bước truy vấn thông tin (retrieval). Nếu quá trình tìm kiếm ngữ nghĩa không tìm được đúng đoạn văn bản chứa thông tin liên quan trong Vector Database, mô hình LLM sẽ không có đủ ngữ cảnh cần thiết, dẫn đến nguy cơ tạo ra câu trả lời sai, không đầy đủ hoặc không liên quan đến câu hỏi của người dùng.
 - Với phương pháp này, dự án mở ra nhiều hướng phát triển tiềm năng trong tương lai để tiếp tục tối ưu hóa tốc độ, độ chính xác và nâng cao trải nghiệm người dùng.
