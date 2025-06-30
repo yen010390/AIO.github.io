@@ -29,10 +29,9 @@ Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
 ## 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
 
 <details>
-<summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF:  <code>PyPDFLoader</code></summary>
-
-
+<summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF (PyPDFLoader) </summary>
 <pre><code class="language-python">
+#Hàm PyPDFLoader
 from langchain.document_loaders import PyPDFLoader
 
 # Tải file PDF và trích xuất văn bản
@@ -42,9 +41,9 @@ documents = loader.load()
 </details>
 
 <details>
-<summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa:  <code>SemanticChunker</code></summary>
-
+<summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa (SemanticChunker) </summary>
 <pre><code class="language-python">
+#Hàm SemanticChunker
 from langchain.text_splitter import SemanticChunker
 
 semantic_splitter = SemanticChunker(
@@ -63,9 +62,10 @@ semantic_splitter = SemanticChunker(
 Hình 2: Sơ đồ về Semantic Chunking.
 
 <details>
-<summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học:  <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
+<summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học (bkai-foundation-models/vietnamese-bi-encoder) </summary>
 
 <pre><code class="language-python">
+#Hàm bkai-foundation-models/vietnamese-bi-encoder
 from langchain.embeddings import HuggingFaceEmbeddings
 
 def load_embeddings():
@@ -79,11 +79,11 @@ Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
 
 <details>
-<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh:  <code>ChromaDB, langchain.vectorstores</code></summary>
-
-
-<pre><code class="language-python">
+<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh (langchain.vectorstores, Chroma) </summary>
+<pre><code class="language-python">    
 from langchain.vectorstores import Chroma
+
+#ChromaDB, langchain.vectorstores
 
 # Phân đoạn và lưu trữ vector
 docs = semantic_splitter.split_documents(documents)
@@ -100,10 +100,9 @@ prompt = hub.pull("rlm/rag-prompt")
 ## 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
 <details>
-<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector:  <code>bkai-foundation-models/vietnamese-bi-encoder  </code></summary>
-
-
+<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector (bkai-foundation-models/vietnamese-bi-encode) </summary>
 <pre><code class="language-python">
+#Hàm bkai-foundation-models/vietnamese-bi-encoder
 @st.cache_resource
 def load_embeddings():
   return HuggingFaceEmbeddings(model_name = "bkai-foundation-models/vietnamese-bi-encoder")
@@ -111,19 +110,16 @@ def load_embeddings():
 </details>
 
 <details>
-<summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu:   <code>ChromaDB</code></summary>
-
-
+<summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu (ChromaDB)</summary>
 <pre><code class="language-python">
+#Hàm ChromaDB
 vector_db = Chroma.from_documents(documents=docs,embedding=st.session_state.embeddings)
 </code></pre>
 </details>
 
 
 <details>
-<summary>Bước 3: Tăng cường – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh:   <code>Mẫu Prompt: rlm/rag-prompt </code></summary>
-
-    
+<summary>Bước 3: Tăng cường – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh (rlm/rag-prompt) </summary>    
 <pre><code class="language-python">
  rlm/rag-prompt
 </code></pre>
@@ -131,10 +127,9 @@ vector_db = Chroma.from_documents(documents=docs,embedding=st.session_state.embe
 
 
 <details>
-<summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng:   <code>lmsys/vicuna-7b-v1.5  </code></summary>
-
-
+<summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng (lmsys/vicuna-7b-v1.5) </summary>
 <pre><code class="language-python">
+#Hàm lmsys/vicuna-7b-v1.5  
 def load_llm():
   MODEL_NAME = "lmsys/vicuna-7b-v1.5"
   nf4_config = BitsAndBytesConfig(
@@ -213,10 +208,9 @@ Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 ### 5.2.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
 <details>
-<summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại: <code>build_prompt_ragprompt_withhistory_en</code></summary>
-
-
+<summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại (build_prompt_ragprompt_withhistory_en) </summary>
 <pre><code class="language-python">
+#Hàm build_prompt_ragprompt_withhistory_en
 def build_prompt_ragprompt_withhistory_en():
     template = """
     You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
@@ -240,10 +234,9 @@ def build_prompt_ragprompt_withhistory_en():
 
 
 <details>
-<summary>1.2. Hàm định dạng và truy xuất lịch sử chat: <code>retrieve_chat_history, format_history</code></summary>
-
-
+<summary>1.2. Hàm định dạng và truy xuất lịch sử chat (retrieve_chat_history, chat_history)</summary>
 <pre><code class="language-python">
+#Hàm retrieve_chat_history, format_history
 def retrieve_chat_history():
     message_threshold = 10
     return st.session_state.chat_history[-message_threshold:] if len(st.session_state.chat_history) >= message_threshold else st.session_state.chat_history
@@ -258,10 +251,9 @@ def format_history(histories):
 </details>
 
 <details>
-<summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat: <code>process_pdf_updated_chain(retriever, llm)</code></summary>
-
-
+<summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat</summary>
 <pre><code class="language-python">
+#Hàm process_pdf_updated_chain(retriever, llm)
 def process_pdf_updated_chain(retriever, llm):
     prompt = build_prompt_ragprompt_withhistory_en()
     rag_chain = (
@@ -280,10 +272,9 @@ def process_pdf_updated_chain(retriever, llm):
 
 
 <details>
-<summary>1.4. Cập nhật cách gọi RAG chain: <code>main_updated_invoke</code></summary>
-
-
+<summary>1.4. Cập nhật cách gọi RAG chain</summary>
 <pre><code class="language-python">
+#Hàm main_updated_invoke
 def main_updated_invoke(user_input):
     output = st.session_state.rag_chain.invoke({
         "question": user_input,
@@ -294,10 +285,9 @@ def main_updated_invoke(user_input):
 
 ### 5.2.2 Quản lý Vector DB nâng cao
 <details>
-<summary>Quản lý Vector DB nâng cao: <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
-
-    
+<summary>Quản lý Vector DB nâng cao (get_chroma_client, process_pdf_updated_db_handling) </summary>
 <pre><code class="language-python">
+#Hàm get_chroma_client, process_pdf_updated_db_handling
 def get_chroma_client(allow_reset=False):
     """Get a Chroma client for vector database operations."""
     return chromadb.PersistentClient(settings=chromadb.Settings(allow_reset=allow_reset))
@@ -316,10 +306,10 @@ def process_pdf_updated_db_handling():
 
 ### 5.2.3. Gỡ lỗi (Debugging) với Logger
 <details>
-<summary>Gỡ lỗi (Debugging) với Logger: <code>format_docs_with_logging</code></summary>
-
+<summary>Gỡ lỗi (Debugging) với Logger (format_docs_with_logging) </summary>
 
 <pre><code class="language-python">
+#Hàm format_docs_with_logging
 def format_docs_with_logging(docs):
     logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
     for i, doc in enumerate(docs):
@@ -337,10 +327,9 @@ def format_docs_with_logging(docs):
 
 ### 5.2.4. Cải tiến giao diện người dùng (UI)
 <details>
-<summary>Cải tiến giao diện người dùng: <code>main_sidebar_enhancements</code></summary>
-
-
+<summary>Cải tiến giao diện người dùng (main_sidebar_enhancements) </summary>
 <pre><code class="language-python">
+#Hàm main_sidebar_enhancements
 def main_sidebar_enhancements():
     with st.sidebar:
         st.logo("./assets/logo.png")
@@ -350,6 +339,8 @@ def main_sidebar_enhancements():
             st.rerun()
 </code></pre>
 </details>
+
+
 
 # 6. Kết luận
 - Dự án đã xây dựng thành công một chatbot ứng dụng kiến trúc RAG, có khả năng hỏi đáp trực tiếp và hiệu quả với các tài liệu PDF chuyên biệt, phù hợp với ngữ cảnh bằng cách kết hợp truy vấn thông tin của cơ sở dữ liệu vector và khả năng tạo sinh ngôn ngữ của LLMs.
