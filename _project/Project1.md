@@ -225,7 +225,7 @@ Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùng nâng cao.
 
-#### 5.3.1 NÂNG CẤP CỐT LÕI: GHI NHỚ LỊCH SỬ HỘI THOẠI (CONVERSATION MEMORY) 
+#### 5.3.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
 <details>
 <summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại: <code>build_prompt_ragprompt_withhistory_en</code></summary>
 
@@ -306,7 +306,7 @@ def main_updated_invoke(user_input):
 </code></pre>
 </details>
 
-#### 5.3.2 QUẢN LÝ VECTOR DB NÂNG CAO
+#### 5.3.2 Quản lý Vector DB nâng cao
 <details>
 <summary>Quản lý Vector DB nâng cao: <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
 
@@ -328,7 +328,7 @@ def process_pdf_updated_db_handling():
 </details>
 
 
-#### 5.3.3. GỠ LỖI (DEBUGGING) VỚI LOGGER
+#### 5.3.3. Gỡ lỗi (Debugging) với Logger
 <details>
 <summary>Gỡ lỗi (Debugging) với Logger: <code>format_docs_with_logging</code></summary>
 
@@ -349,7 +349,7 @@ def format_docs_with_logging(docs):
 </code></pre>
 </details>
 
-#### 5.3.4. CẢI TIẾN GIAO DIỆN NGƯỜI DÙNG (UI)
+#### 5.3.4. Cải tiến giao diện người dùng (UI)
 <details>
 <summary>Cải tiến giao diện người dùng: <code>main_sidebar_enhancements</code></summary>
 
