@@ -183,3 +183,155 @@ Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 
 ## 5. Mở rộng nhân cao
+
+### **5.1 Điểm cải tiến:** khả năng ghi nhớ lịch sử hội thoại
+
+### **5.2 Tiêu chí cải tiến:**
+
+| Tiêu chí                     | Phiên bản cũ                                                                                           | Phiên bản cải tiến                                                                                                   |
+|-----------------------------|----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| **Khả năng ghi nhớ**        | ❌ Không ghi nhớ hội thoại trước đó. Mỗi câu hỏi được xử lý độc lập.                                                       | ✅ Ghi nhớ và sử dụng lịch sử trò chuyện để tăng độ chính xác và mạch lạc trong hội thoại.                                             |
+| **Cách gọi `rag_chain`**    | Gọi với **chỉ câu hỏi**:<br>`rag_chain.invoke(user_input)`                                                                 | Gọi với **câu hỏi + lịch sử hội thoại**:<br>`rag_chain.invoke({ "question": user_input, "chat_history": retrieve_chat_history() })`   |
+| **Thiết kế prompt**         | Sử dụng prompt mặc định từ hub, không có thông tin hội thoại trước đó.                                                     | Prompt hỗ trợ tích hợp lịch sử hội thoại, tùy chọn tiếng Việt/Anh, cho phép thử nghiệm linh hoạt hơn.                                |
+| **Ứng dụng thực tế**        | Phù hợp với truy vấn đơn lẻ, không cần bối cảnh trước đó.                                                                  | Thích hợp cho các cuộc hội thoại nhiều lượt cần hiểu ngữ cảnh.                                                                        |
+| **Cấu trúc & Module hóa**   | Mã nguồn đơn giản, ít tách module.                                                                                         | Cấu trúc rõ ràng, chia module tốt với các hàm riêng như `build_prompt_...`, `get_chroma_client()`.                                    |
+| **Quản lý Vector DB**       | Sử dụng ChromaDB theo mặc định, dễ lỗi khi xử lý nhiều file PDF liên tiếp.                                                  | Dùng `chromadb.PersistentClient` và `reset()` trước khi xử lý file mới giúp tránh lỗi và quản lý trạng thái tốt hơn.                 |
+| **Kỹ thuật Prompt**         | Duy nhất một prompt từ `hub.pull("rlm/rag-prompt")`.                                                                      | Có nhiều tùy chọn prompt: tiếng Việt, tiếng Anh, tích hợp lịch sử hội thoại.                                                         |
+| **Giao diện người dùng (UI)**| Giao diện đơn giản.                                                                                                        | Có nút "Xóa lịch sử chat", hiển thị logo (`st.logo`), các nút sử dụng `use_container_width=True` giúp UI gọn gàng, hiện đại hơn.     |
+| **Gỡ lỗi (Debugging)**      | Không có logging.                                                                                                           | Có tích hợp `logger` để ghi lại thông tin debug (ví dụ: các chunks được truy vấn), hỗ trợ phát triển tốt hơn.                        |
+| **Thư viện phụ thuộc**      | Ít thư viện hơn.                                                                                                            | Thêm thư viện như `chromadb`, `ChatPromptTemplate`, `itemgetter` và module `utils` tùy chỉnh.                                         |
+
+
+###  5.3 Code sau khi cải tiến
+#### 5.3.1 NÂNG CẤP CỐT LÕI: GHI NHỚ LỊCH SỬ HỘI THOẠI (CONVERSATION MEMORY) 
+<details>
+<summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại <code>build_prompt_ragprompt_withhistory_en</code></summary>
+
+```python
+def build_prompt_ragprompt_withhistory_en():
+    template = """
+    You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
+    Instructions:
+    - Use three sentences maximum
+    - Keep the answer concise
+
+    Conversation history:
+    {chat_history}
+    
+    Context:
+    {context} 
+
+    Question: {question} 
+
+    Answer:"""
+    prompt = ChatPromptTemplate.from_template(template)
+    return prompt
+```
+</details>
+
+
+<details>
+<summary>1.2. Hàm định dạng và truy xuất lịch sử chat <code>retrieve_chat_history, format_history</code></summary>
+
+```python
+def retrieve_chat_history():
+    message_threshold = 10
+    return st.session_state.chat_history[-message_threshold:] if len(st.session_state.chat_history) >= message_threshold else st.session_state.chat_history
+
+def format_history(histories):
+    formatted_history = ""
+    for msg in histories:
+        role = "User" if msg["role"] == "user" else "Assistant"
+        formatted_history += f"{role}: {msg['content']}\n\n"
+    return formatted_history.strip()
+```
+</details>
+
+<details>
+<summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat <code>process_pdf_updated_chain(retriever, llm)</code></summary>
+
+```python
+def process_pdf_updated_chain(retriever, llm):
+    prompt = build_prompt_ragprompt_withhistory_en()
+    rag_chain = (
+        {
+            "context": itemgetter("question") | retriever | format_docs,
+            "question": itemgetter("question"),
+            "chat_history": lambda x: format_history(x["chat_history"])
+        }
+        | prompt
+        | llm
+        | StrOutputParser()
+    )
+    return rag_chain
+```
+</details>
+
+
+<details>
+<summary>1.4. Cập nhật cách gọi RAG chain <code>main_updated_invoke</code></summary>
+
+```python
+def main_updated_invoke(user_input):
+    output = st.session_state.rag_chain.invoke({
+        "question": user_input,
+        "chat_history": retrieve_chat_history()
+    })
+```
+</details>
+
+#### 5.3.2 QUẢN LÝ VECTOR DB NÂNG CAO
+<details>
+<summary>Quản lý Vector DB nâng cao <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
+    
+```python
+def get_chroma_client(allow_reset=False):
+    """Get a Chroma client for vector database operations."""
+    return chromadb.PersistentClient(settings=chromadb.Settings(allow_reset=allow_reset))
+
+def process_pdf_updated_db_handling():
+    client = get_chroma_client(allow_reset=True)
+    client.reset()
+    vector_db = Chroma.from_documents(
+        documents=docs, 
+        embedding=st.session_state.embeddings,
+        client=client
+    )
+```
+</details>
+
+
+#### 5.3.3. GỠ LỖI (DEBUGGING) VỚI LOGGER
+<details>
+<summary>Gỡ lỗi (Debugging) với Logger <code>format_docs_with_logging</code></summary>
+    
+```python
+def format_docs_with_logging(docs):
+    logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
+    for i, doc in enumerate(docs):
+        page_num = doc.metadata.get('page') + 1 if 'page' in doc.metadata else -1
+        source = doc.metadata.get('source', 'document')
+        file_name = os.path.basename(source) if isinstance(source, str) else 'unknown'
+
+        logger.info(f"""
+        ([reference-{i+1}] Page {page_num} - Source: {file_name})
+        {doc.page_content}""")
+    
+    return "\n\n".join(doc.page_content for doc in docs)
+```
+</details>
+
+#### 5.3.4. CẢI TIẾN GIAO DIỆN NGƯỜI DÙNG (UI)
+<details>
+<summary>Cải tiến giao diện người dùng <code>main_sidebar_enhancements</code></summary>
+    
+```python
+def main_sidebar_enhancements():
+    with st.sidebar:
+        st.logo("./assets/logo.png")
+        st.subheader("💬 Điều khiển Chat")
+        if st.button("🗑️ Xóa lịch sử chat", use_container_width=True):
+            clear_chat()
+            st.rerun()
+```
+</details>
