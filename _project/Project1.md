@@ -186,11 +186,11 @@ Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 [👉 Xem file code](/AIO.github.io/files/M01_rag_chatbot.py)
 
 
-# 5. Mở rộng nhân cao
+# 5. Mở rộng nâng cao
 
-## **5.1 Điểm cải tiến:** khả năng ghi nhớ lịch sử hội thoại
+Điểm cải tiến sau khi thực hiện dự án được đề xuất như nhau:
 
-## **5.2 Tiêu chí cải tiến:**
+## **5.1 Tiêu chí cải tiến:**
 
 | Tiêu chí                     | Phiên bản cũ                                                                                           | Phiên bản cải tiến                                                                                                   |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
@@ -206,13 +206,13 @@ Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 | **Thư viện phụ thuộc**      | Ít thư viện hơn.                                                                                                            | Thêm thư viện như `chromadb`, `ChatPromptTemplate`, `itemgetter` và module `utils` tùy chỉnh.                                         |
 
 
-##  5.3 Code nâng cao
+##  5.2 Code nâng cao
 [👉 Xem file code cải tiến](/AIO.github.io/files/M01_rag_chatbot_cai_tien.py)
 
 
 Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùng nâng cao.
 
-### 5.3.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
+### 5.2.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
 <details>
 <summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại: <code>build_prompt_ragprompt_withhistory_en</code></summary>
 
@@ -293,7 +293,7 @@ def main_updated_invoke(user_input):
 </code></pre>
 </details>
 
-### 5.3.2 Quản lý Vector DB nâng cao
+### 5.2.2 Quản lý Vector DB nâng cao
 <details>
 <summary>Quản lý Vector DB nâng cao: <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
 
@@ -315,7 +315,7 @@ def process_pdf_updated_db_handling():
 </details>
 
 
-### 5.3.3. Gỡ lỗi (Debugging) với Logger
+### 5.2.3. Gỡ lỗi (Debugging) với Logger
 <details>
 <summary>Gỡ lỗi (Debugging) với Logger: <code>format_docs_with_logging</code></summary>
 
@@ -336,7 +336,7 @@ def format_docs_with_logging(docs):
 </code></pre>
 </details>
 
-### 5.3.4. Cải tiến giao diện người dùng (UI)
+### 5.2.4. Cải tiến giao diện người dùng (UI)
 <details>
 <summary>Cải tiến giao diện người dùng: <code>main_sidebar_enhancements</code></summary>
 
