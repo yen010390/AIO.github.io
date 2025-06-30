@@ -24,7 +24,17 @@ Hệ thống được xây dựng dựa trên kiến trúc RAG tiêu chuẩn, ba
 
 ![Quy trình RAG tổng quan](/AIO.github.io/images/M01/M01_RAG_1.png)
 
-Hình 1: Sơ đồ tổng quan về kiến trúc RAG được sử dụng trong dự án.
+Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
+
+
+![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
+
+Hình 2: Sơ đồ bước thực hiện xây dựng vector database.
+
+![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
+
+Hình 3: Sơ đồ về Semantic Chunking.
+
 
 ### 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
 
