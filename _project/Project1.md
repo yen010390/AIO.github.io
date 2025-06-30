@@ -178,9 +178,7 @@ Giao diện ứng dụng cho phép người dùng:
 
 Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
 
-<details> <summary>Hiển thị nội dung file code <code>/AIO.github.io/M01_rag_chatbot.py</code></summary>
-</details>
-
+[Xem file code `/AIO.github.io/files/M01_rag_chatbot_cai_tien.py`](./files/M01_rag_chatbot.py)
 
 ## 5. Mở rộng nhân cao
 
@@ -203,6 +201,9 @@ Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 
 ###  5.3 Code sau khi cải tiến
+[Xem file code cải tiến `/AIO.github.io/files/M01_rag_chatbot_cai_tien.py`](./files/M01_rag_chatbot_cai_tien.py)
+
+
 #### 5.3.1 NÂNG CẤP CỐT LÕI: GHI NHỚ LỊCH SỬ HỘI THOẠI (CONVERSATION MEMORY) 
 <details>
 <summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại <code>build_prompt_ragprompt_withhistory_en</code></summary>
