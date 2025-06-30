@@ -95,7 +95,7 @@ from langchain import hub
 prompt = hub.pull("rlm/rag-prompt")
 </code></pre>
 </details>
----
+
 
 ## 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
