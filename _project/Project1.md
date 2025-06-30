@@ -78,4 +78,6 @@ Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 
 <details> <summary>Hiển thị nội dung file <code>/AIO.github.io/M01_rag_chatbot.py</code></summary>
 
+
+
 ## 5. Mở rộng nhân cao
