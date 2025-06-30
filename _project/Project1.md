@@ -77,8 +77,9 @@ def load_embeddings():
 
 Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
+
 <details>
-<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh:  <code>ChromaDB</code></summary>
+<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh:  <code>ChromaDB, langchain.vectorstores</code></summary>
 
 
 <pre><code class="language-python">
@@ -99,7 +100,7 @@ prompt = hub.pull("rlm/rag-prompt")
 ## 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
 <details>
-<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector:  <code>ChromaDB</code></summary>
+<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector:  <code>bkai-foundation-models/vietnamese-bi-encoder  </code></summary>
 
 
 <pre><code class="language-python">
@@ -114,9 +115,7 @@ def load_embeddings():
 
 
 <pre><code class="language-python">
-@st.cache_resource
-def load_embeddings():
-  return HuggingFaceEmbeddings(model_name = "bkai-foundation-models/vietnamese-bi-encoder")
+vector_db = Chroma.from_documents(documents=docs,embedding=st.session_state.embeddings)
 </code></pre>
 </details>
 
