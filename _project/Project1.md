@@ -9,16 +9,16 @@ Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền
 
 Ngày: 30 tháng 6 năm 2025
 
-## Tóm tắt
+# Tóm tắt
 Mặc dù LLMs rất mạnh, chúng vẫn bị hạn chế về kiến thức chuyên ngành và tính cập nhật. Dự án này xây dựng hệ thống hỏi đáp thông minh dùng kiến trúc RAG, giúp người học khóa AI tại AI Việt Nam (AIO) khai thác hiệu quả nội dung tài liệu học tập.
 
 
-## 1. Giới thiệu
+# 1. Giới thiệu
 - Các Mô hình Ngôn ngữ Lớn (LLMs) như ChatGPT có khả năng trả lời linh hoạt nhưng bị giới hạn bởi dữ liệu huấn luyện, nên không xử lý tốt thông tin mới hoặc cá nhân hóa.
 - Để khắc phục, kiến trúc Retrieval-Augmented Generation (RAG) cho phép LLM truy xuất thông tin từ nguồn ngoài (như PDF, cơ sở dữ liệu) trước khi tạo câu trả lời, giúp kết quả chính xác và phù hợp hơn.
 - Mục tiêu dự án là xây dựng chatbot ứng dụng RAG, hỗ trợ học viên khóa AIO hỏi – đáp trực tiếp dựa trên nội dung tài liệu bài giảng.
 
-## 2. Phương pháp luận
+# 2. Phương pháp luận
 Hệ thống được xây dựng dựa trên kiến trúc RAG tiêu chuẩn, bao gồm hai quy trình chính: Lập chỉ mục dữ liệu (Indexing) và Truy vấn & Tạo sinh (Retrieval & Generation).
 
 ![Quy trình RAG tổng quan](/AIO.github.io/images/M01/M01_RAG_1.png)
@@ -26,7 +26,7 @@ Hệ thống được xây dựng dựa trên kiến trúc RAG tiêu chuẩn, ba
 Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
 
 
-### 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
+## 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
 
 <details>
 <summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF:  <code>PyPDFLoader</code></summary>
@@ -44,11 +44,6 @@ documents = loader.load()
 <details>
 <summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa:  <code>SemanticChunker</code></summary>
 
-![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
-
-Hình 2: Sơ đồ về Semantic Chunking.
-
-
 <pre><code class="language-python">
 from langchain.text_splitter import SemanticChunker
 
@@ -63,13 +58,12 @@ semantic_splitter = SemanticChunker(
 </code></pre>
 </details>
 
+![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
+
+Hình 2: Sơ đồ về Semantic Chunking.
+
 <details>
 <summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học:  <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
-
-![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
-
-Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
-
 
 <pre><code class="language-python">
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -78,6 +72,10 @@ def load_embeddings():
     return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
 </code></pre>
 </details>
+
+![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
+
+Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
 <details>
 <summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh:  <code>ChromaDB</code></summary>
@@ -98,7 +96,7 @@ prompt = hub.pull("rlm/rag-prompt")
 </details>
 ---
 
-### 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
+## 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
 <details>
 <summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector:  <code>ChromaDB</code></summary>
@@ -164,7 +162,7 @@ def load_llm():
 </details>
 
 
-## 3. Thực hiện
+# 3. Thực hiện
 
 Ứng dụng được xây dựng bằng Python với giao diện người dùng tương tác được tạo bởi thư viện Streamlit. Các thư viện chính được sử dụng bao gồm:
 - Streamlit: Xây dựng giao diện web cho ứng dụng.
@@ -181,18 +179,18 @@ Giao diện ứng dụng cho phép người dùng:
 
 Để tối ưu hóa trải nghiệm, các mô hình nặng (embedding và LLM) được cache lại bằng @st.cache_resource của Streamlit, đảm bảo chúng chỉ cần tải một lần duy nhất khi khởi động ứng dụng
 
-## 4. Kết quả
+# 4. Kết quả
 
 Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
 
 [👉 Xem file code](/AIO.github.io/files/M01_rag_chatbot.py)
 
 
-## 5. Mở rộng nhân cao
+# 5. Mở rộng nhân cao
 
-### **5.1 Điểm cải tiến:** khả năng ghi nhớ lịch sử hội thoại
+## **5.1 Điểm cải tiến:** khả năng ghi nhớ lịch sử hội thoại
 
-### **5.2 Tiêu chí cải tiến:**
+## **5.2 Tiêu chí cải tiến:**
 
 | Tiêu chí                     | Phiên bản cũ                                                                                           | Phiên bản cải tiến                                                                                                   |
 |-----------------------------|----------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
@@ -208,13 +206,13 @@ Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 | **Thư viện phụ thuộc**      | Ít thư viện hơn.                                                                                                            | Thêm thư viện như `chromadb`, `ChatPromptTemplate`, `itemgetter` và module `utils` tùy chỉnh.                                         |
 
 
-###  5.3 Code nâng cao
+##  5.3 Code nâng cao
 [👉 Xem file code cải tiến](/AIO.github.io/files/M01_rag_chatbot_cai_tien.py)
 
 
 Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùng nâng cao.
 
-#### 5.3.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
+### 5.3.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
 <details>
 <summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại: <code>build_prompt_ragprompt_withhistory_en</code></summary>
 
@@ -295,7 +293,7 @@ def main_updated_invoke(user_input):
 </code></pre>
 </details>
 
-#### 5.3.2 Quản lý Vector DB nâng cao
+### 5.3.2 Quản lý Vector DB nâng cao
 <details>
 <summary>Quản lý Vector DB nâng cao: <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
 
@@ -317,7 +315,7 @@ def process_pdf_updated_db_handling():
 </details>
 
 
-#### 5.3.3. Gỡ lỗi (Debugging) với Logger
+### 5.3.3. Gỡ lỗi (Debugging) với Logger
 <details>
 <summary>Gỡ lỗi (Debugging) với Logger: <code>format_docs_with_logging</code></summary>
 
@@ -338,7 +336,7 @@ def format_docs_with_logging(docs):
 </code></pre>
 </details>
 
-#### 5.3.4. Cải tiến giao diện người dùng (UI)
+### 5.3.4. Cải tiến giao diện người dùng (UI)
 <details>
 <summary>Cải tiến giao diện người dùng: <code>main_sidebar_enhancements</code></summary>
 
@@ -353,3 +351,8 @@ def main_sidebar_enhancements():
             st.rerun()
 </code></pre>
 </details>
+
+# 6. Kết luận
+- Dự án đã xây dựng thành công một chatbot ứng dụng kiến trúc RAG, có khả năng hỏi đáp trực tiếp và hiệu quả với các tài liệu PDF chuyên biệt, phù hợp với ngữ cảnh bằng cách kết hợp truy vấn thông tin của cơ sở dữ liệu vector và khả năng tạo sinh ngôn ngữ của LLMs.
+- Chất lượng câu trả lời của hệ thống phụ thuộc hoàn toàn vào hiệu quả của bước truy vấn thông tin (retrieval). Nếu quá trình tìm kiếm ngữ nghĩa không tìm được đúng đoạn văn bản chứa thông tin liên quan trong Vector Database, mô hình LLM sẽ không có đủ ngữ cảnh cần thiết, dẫn đến nguy cơ tạo ra câu trả lời sai, không đầy đủ hoặc không liên quan đến câu hỏi của người dùng.
+- Với phương pháp này, dự án mở ra nhiều hướng phát triển tiềm năng trong tương lai để tiếp tục tối ưu hóa tốc độ, độ chính xác và nâng cao trải nghiệm người dùng.
