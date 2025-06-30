@@ -9,7 +9,7 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default"
-title                    : "MIX002 Homepage"
+title                    : "MIX002's Homepage"
 title_separator          : "-"
 name                     : &name "MIX002"
 description              : &description "personal description"
@@ -25,7 +25,7 @@ author:
   avatar           : https://yen010390.github.io/AIO.github.io/images/profile/profile-Group.webp
   name             : "MIX002"
   pronouns         : "We/ Our"  
-  bio              : "Nhóm MIX002"
+  bio              : "Nhóm MIX002 - AIO 2025 xây dựng blog học tập và lưu trữ dự án nhóm"
   location         : "Vietnam"
   employer         : "AIO Vietnam"
   uri              : # URL
