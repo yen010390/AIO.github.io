@@ -28,23 +28,126 @@ Hình 1: Sơ đồ tổng quan về kiến trúc RAG được sử dụng trong 
 
 ### 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
 
-| Bước     | Tên bước      | Mục đích                                                           | Thư viện/Hàm hoặc Mô hình                            |
-|----------|---------------|---------------------------------------------------------------------|------------------------------------------------------|
-| 1   | Tải dữ liệu    | Đọc và trích xuất văn bản từ file PDF                              | PyPDFLoader                                           |
-| 2   | Phân đoạn      | Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa                | SemanticChunker                                       |
-| 3   | Mã hóa         | Chuyển mỗi đoạn văn bản thành vector số học                        | bkai-foundation-models/vietnamese-bi-encoder         |
-| 4   | Lưu trữ        | Lưu các vector vào một cơ sở dữ liệu để truy vấn nhanh             | ChromaDB                                              |
+<details>
+<summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF <code>PyPDFLoader</code></summary>
+
+```python
+from langchain.document_loaders import PyPDFLoader
+
+# Tải file PDF và trích xuất văn bản
+loader = PyPDFLoader(tmp_file_path)
+documents = loader.load()
+```
+</details>
+
+<details>
+<summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa <code>SemanticChunker</code></summary>
+
+```python
+from langchain.text_splitter import SemanticChunker
+
+semantic_splitter = SemanticChunker(
+    embeddings = st.session_state.embeddings,
+    buffer_size = 1,
+    breakpoint_threshold_type = "percentile",
+    breakpoint_threshold_amount = 95,
+    min_chunk_size = 500,
+    add_start_index = True
+)
+```
+</details>
+
+<details>
+<summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
+
+```python
+from langchain.embeddings import HuggingFaceEmbeddings
+
+def load_embeddings():
+    return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
+```
+</details>
+
+<details>
+<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
+
+```python
+from langchain.vectorstores import Chroma
+
+# Phân đoạn và lưu trữ vector
+docs = semantic_splitter.split_documents(documents)
+vector_db = Chroma.from_documents(documents=docs, embedding=st.session_state.embeddings)
+retriever = vector_db.as_retriever()
+
+# Tải prompt mẫu từ hub
+from langchain import hub
+prompt = hub.pull("rlm/rag-prompt")
+```
+</details>
 
 ---
 
 ### 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
-| Bước     | Tên bước             | Mục đích                                                                 | Thư viện/Hàm hoặc Mô hình                          |
-|----------|----------------------|--------------------------------------------------------------------------|----------------------------------------------------|
-| 1   | Mã hóa câu hỏi        | Chuyển câu hỏi của người dùng thành vector                              | bkai-foundation-models/vietnamese-bi-encoder       |
-| 2   | Truy vấn              | Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu            | ChromaDB                                            |
-| 3   | Tăng cường            | Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh             | Mẫu Prompt: rlm/rag-prompt                         |
-| 4   | Tạo sinh              | Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng           | lmsys/vicuna-7b-v1.5                                |
+<details>
+<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector  <code>ChromaDB</code></summary>
+
+```python
+@st.cache_resource
+def load_embeddings():
+  return HuggingFaceEmbeddings(model_name = "bkai-foundation-models/vietnamese-bi-encoder")
+```
+</details>
+
+<details>
+<summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu   <code>ChromaDB</code></summary>
+
+```python
+@st.cache_resource
+def load_embeddings():
+  return HuggingFaceEmbeddings(model_name = "bkai-foundation-models/vietnamese-bi-encoder")
+```
+</details>
+
+
+<details>
+<summary>Bước 3: Tăng cường – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh   <code>Mẫu Prompt: rlm/rag-prompt </code></summary>
+
+```python
+ rlm/rag-prompt
+```
+</details>
+
+
+<details>
+<summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng   <code>lmsys/vicuna-7b-v1.5  </code></summary>
+
+```python
+def load_llm():
+  MODEL_NAME = "lmsys/vicuna-7b-v1.5"
+  nf4_config = BitsAndBytesConfig(
+    load_in_4bit = True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_compute_dtype=torch.bfloat16
+  )
+  model = AutoModelForCausalLM.from_pretrained(
+    MODEL_NAME,
+    quantization_config=nf4_config, low_cpu_mem_usage = True
+  )
+  tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+  model_pipeline = pipeline(
+    "text-generation",
+    model = model,
+    tokenizer = tokenizer,
+    max_new_tokens = 512,
+    pad_token_id = tokenizer.eos_token_id,
+    device_map = "auto"
+  )
+  return HuggingFacePipeline(pipeline = model_pipeline)
+```
+</details>
+
 
 ## 3. Thực hiện
 
@@ -76,8 +179,8 @@ Giao diện ứng dụng cho phép người dùng:
 
 Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
 
-<details> <summary>Hiển thị nội dung file <code>/AIO.github.io/M01_rag_chatbot.py</code></summary>
-
+<details> <summary>Hiển thị nội dung file code <code>/AIO.github.io/M01_rag_chatbot.py</code></summary>
+</details>
 
 
 ## 5. Mở rộng nhân cao
