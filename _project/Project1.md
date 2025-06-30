@@ -40,7 +40,7 @@ Hình 3: Sơ đồ về Semantic Chunking.
 ### 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
 
 <details>
-<summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF <code>PyPDFLoader</code></summary>
+<summary>Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF:  <code>PyPDFLoader</code></summary>
 
 <pre><code class="language-python">
 from langchain.document_loaders import PyPDFLoader
@@ -52,7 +52,7 @@ documents = loader.load()
 </details>
 
 <details>
-<summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa <code>SemanticChunker</code></summary>
+<summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) có ý nghĩa:  <code>SemanticChunker</code></summary>
 
 <pre><code class="language-python">
 from langchain.text_splitter import SemanticChunker
@@ -69,7 +69,7 @@ semantic_splitter = SemanticChunker(
 </details>
 
 <details>
-<summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
+<summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học:  <code>bkai-foundation-models/vietnamese-bi-encoder</code></summary>
 
 <pre><code class="language-python">
 from langchain.embeddings import HuggingFaceEmbeddings
@@ -80,7 +80,7 @@ def load_embeddings():
 </details>
 
 <details>
-<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh <code>ChromaDB</code></summary>
+<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh:  <code>ChromaDB</code></summary>
 
 <pre><code class="language-python">
 from langchain.vectorstores import Chroma
@@ -102,37 +102,37 @@ prompt = hub.pull("rlm/rag-prompt")
 <details>
 <summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector  <code>ChromaDB</code></summary>
 
-```python
+<pre><code class="language-python">
 @st.cache_resource
 def load_embeddings():
   return HuggingFaceEmbeddings(model_name = "bkai-foundation-models/vietnamese-bi-encoder")
-```
+</code></pre>
 </details>
 
 <details>
 <summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu   <code>ChromaDB</code></summary>
 
-```python
+<pre><code class="language-python">
 @st.cache_resource
 def load_embeddings():
   return HuggingFaceEmbeddings(model_name = "bkai-foundation-models/vietnamese-bi-encoder")
-```
+</code></pre>
 </details>
 
 
 <details>
 <summary>Bước 3: Tăng cường – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh   <code>Mẫu Prompt: rlm/rag-prompt </code></summary>
 
-```python
+<pre><code class="language-python">
  rlm/rag-prompt
-```
+</code></pre>
 </details>
 
 
 <details>
 <summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng   <code>lmsys/vicuna-7b-v1.5  </code></summary>
 
-```python
+<pre><code class="language-python">
 def load_llm():
   MODEL_NAME = "lmsys/vicuna-7b-v1.5"
   nf4_config = BitsAndBytesConfig(
@@ -155,7 +155,7 @@ def load_llm():
     device_map = "auto"
   )
   return HuggingFacePipeline(pipeline = model_pipeline)
-```
+</code></pre>
 </details>
 
 
@@ -219,7 +219,7 @@ Hình 2: Giao diện ứng dụng khi trả lời câu hỏi của người dùn
 <details>
 <summary>1.1. Hàm xây dựng prompt có chứa lịch sử hội thoại <code>build_prompt_ragprompt_withhistory_en</code></summary>
 
-```python
+<pre><code class="language-python">
 def build_prompt_ragprompt_withhistory_en():
     template = """
     You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
@@ -238,14 +238,14 @@ def build_prompt_ragprompt_withhistory_en():
     Answer:"""
     prompt = ChatPromptTemplate.from_template(template)
     return prompt
-```
+</code></pre>
 </details>
 
 
 <details>
 <summary>1.2. Hàm định dạng và truy xuất lịch sử chat <code>retrieve_chat_history, format_history</code></summary>
 
-```python
+<pre><code class="language-python">
 def retrieve_chat_history():
     message_threshold = 10
     return st.session_state.chat_history[-message_threshold:] if len(st.session_state.chat_history) >= message_threshold else st.session_state.chat_history
@@ -256,13 +256,13 @@ def format_history(histories):
         role = "User" if msg["role"] == "user" else "Assistant"
         formatted_history += f"{role}: {msg['content']}\n\n"
     return formatted_history.strip()
-```
+</code></pre>
 </details>
 
 <details>
 <summary>1.3. Cập nhật RAG Chain để xử lý lịch sử chat <code>process_pdf_updated_chain(retriever, llm)</code></summary>
 
-```python
+<pre><code class="language-python">
 def process_pdf_updated_chain(retriever, llm):
     prompt = build_prompt_ragprompt_withhistory_en()
     rag_chain = (
@@ -276,27 +276,27 @@ def process_pdf_updated_chain(retriever, llm):
         | StrOutputParser()
     )
     return rag_chain
-```
+</code></pre>
 </details>
 
 
 <details>
 <summary>1.4. Cập nhật cách gọi RAG chain <code>main_updated_invoke</code></summary>
 
-```python
+<pre><code class="language-python">
 def main_updated_invoke(user_input):
     output = st.session_state.rag_chain.invoke({
         "question": user_input,
         "chat_history": retrieve_chat_history()
     })
-```
+</code></pre>
 </details>
 
 #### 5.3.2 QUẢN LÝ VECTOR DB NÂNG CAO
 <details>
 <summary>Quản lý Vector DB nâng cao <code>get_chroma_client, process_pdf_updated_db_handling</code></summary>
     
-```python
+<pre><code class="language-python">
 def get_chroma_client(allow_reset=False):
     """Get a Chroma client for vector database operations."""
     return chromadb.PersistentClient(settings=chromadb.Settings(allow_reset=allow_reset))
@@ -309,7 +309,7 @@ def process_pdf_updated_db_handling():
         embedding=st.session_state.embeddings,
         client=client
     )
-```
+</code></pre>
 </details>
 
 
@@ -317,7 +317,7 @@ def process_pdf_updated_db_handling():
 <details>
 <summary>Gỡ lỗi (Debugging) với Logger <code>format_docs_with_logging</code></summary>
     
-```python
+<pre><code class="language-python">
 def format_docs_with_logging(docs):
     logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
     for i, doc in enumerate(docs):
@@ -330,14 +330,14 @@ def format_docs_with_logging(docs):
         {doc.page_content}""")
     
     return "\n\n".join(doc.page_content for doc in docs)
-```
+</code></pre>
 </details>
 
 #### 5.3.4. CẢI TIẾN GIAO DIỆN NGƯỜI DÙNG (UI)
 <details>
 <summary>Cải tiến giao diện người dùng <code>main_sidebar_enhancements</code></summary>
     
-```python
+<pre><code class="language-python">
 def main_sidebar_enhancements():
     with st.sidebar:
         st.logo("./assets/logo.png")
@@ -345,5 +345,5 @@ def main_sidebar_enhancements():
         if st.button("🗑️ Xóa lịch sử chat", use_container_width=True):
             clear_chat()
             st.rerun()
-```
+</code></pre>
 </details>
