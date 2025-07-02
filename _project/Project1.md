@@ -9,9 +9,7 @@ Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền
 
 <details>
 <summary><strong>📁 Cấu trúc thư mục (click để xem)</strong></summary>
-
 <br>
-
 <pre><code>
 📦 RAG_AIO_Chatbot
 ├── assets/              # Tài sản tĩnh (logo, favicon...)
@@ -25,22 +23,18 @@ Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền
 ├── requirements.txt
 └── README.md
 </code></pre>
-
 </details>
 
 <details>
-<summary><strong>📁 Xem Mục lục báo cáo</strong></summary>
-
-```text
-📦RAG_AIO_Chatbot
+<summary><strong>📁 Mục lục báo cáo (click để xem)</strong></summary>
+<br>
+<pre><code>
+📦 RAG_AIO_Chatbot
 ├── 📁 Tóm tắt
-│
 ├── 🗂 1. Giới thiệu 
-│
 ├── 📚 2. Phương pháp luận 
 │   ├── 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
 │   └── 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
-│
 ├── ⚙ 3. Thực hiện  
 ├── 📈 4. Kết quả  
 ├── 🖥 5. Mở rộng nâng cao
@@ -48,7 +42,7 @@ Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền
 │   ├── 5.2 Code nâng cao
 │   └── 5.3 Kết quả mở rộng
 └── 📌 6. Kết luận 
-```
+</code></pre>
 </details>
 
 
