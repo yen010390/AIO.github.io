@@ -173,6 +173,8 @@ Giao diện ứng dụng cho phép người dùng:
 
 # 4. Kết quả 📈 
 
+File code hoàn chỉnh và hình ảnh giao diện của người dùng và kết quả chatbot bằng RAG được ghi nhận sau đây.
+
 [👉 Xem file code](/AIO.github.io/files/M01_rag_chatbot.py)
 
 
@@ -217,10 +219,9 @@ Hình 4.4: Giao diện của người dùng - Đặt câu hỏi và chatbot tr�
 
 
 ##  5.2 Code nâng cao
+
+File code cải tiến và những hàm sử dụng thêm trong báo cáo được liệt kê sau đây.
 [👉 Xem file code cải tiến](/AIO.github.io/files/M01_rag_chatbot_cai_tien.py)
-
-
-Hình 5: Giao diện ứng dụng khi trả lời câu hỏi của người dùng nâng cao.
 
 ### 5.2.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
 <details>
@@ -354,6 +355,8 @@ def main_sidebar_enhancements():
 </details>
 
 ##  5.3 Kết quả 📍
+
+Hình ảnh giao diện của người dùng và kết quả chatbot bằng RAG sau khi cải tiến được ghi nhận sau đây.
 
 ![Data mẫu YOLOv10_Tutorials](/AIO.github.io/images/M01/M1-6.png)
 
