@@ -207,6 +207,7 @@ def load_llm():
 </details>
 
 
+
 # 3. Thực hiện ⚙ 
 
 Ứng dụng được xây dựng bằng Python với giao diện người dùng tương tác được tạo bởi thư viện Streamlit. Các thư viện chính được sử dụng bao gồm:
@@ -223,6 +224,8 @@ Giao diện ứng dụng cho phép người dùng:
 - Nhận câu trả lời được tạo ra bởi hệ thống.
 
 Để tối ưu hóa trải nghiệm, các mô hình nặng (embedding và LLM) được cache lại bằng @st.cache_resource của Streamlit, đảm bảo chúng chỉ cần tải một lần duy nhất khi khởi động ứng dụng
+
+
 
 # 4. Kết quả 📈 
 
