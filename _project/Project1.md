@@ -7,6 +7,59 @@ author: "Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - 
 
 Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
 
+<details>
+<summary><strong>📁 Xem Cấu trúc thư mục dự án</strong></summary>
+
+```text
+📦RAG_AIO_Chatbot
+├── 📁data/                       # Thư mục chứa các file PDF đầu vào
+│   ├── YOLOv10_Tutorials.pdf
+│   └── Medical_Report.pdf
+│
+├── 📁utils/
+│   ├── db_utils.py
+│   ├── history_utils.py
+│   ├── prompt_utils.py
+│   └── logger_utils.py
+│
+├── 📁models/
+│   ├── embedding_loader.py
+│   └── llm_loader.py
+│
+├── 📁files/
+│   ├── M01_rag_chatbot.py
+│   ├── M01_rag_chatbot_cai_tien.py
+├── requirements.txt
+├── README.md
+└── .streamlit/
+    └── config.toml
+```
+</details>
+
+<details>
+<summary><strong>📁 Xem Mục lục báo cáo</strong></summary>
+
+```text
+📦RAG_AIO_Chatbot
+├── 📁 Tóm tắt
+│
+├── 🗂 1. Giới thiệu 
+│
+├── 📚 2. Phương pháp luận 
+│   ├── 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
+│   └── 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
+│
+├── ⚙ 3. Thực hiện  
+├── 📈 4. Kết quả  
+├── 🖥 5. Mở rộng nâng cao
+│   ├── 5.1 Tiêu chí cải tiến
+│   ├── 5.2 Code nâng cao
+│   └── 5.3 Kết quả mở rộng
+└── 📌 6. Kết luận 
+```
+</details>
+
+
 # Tóm tắt
 Mặc dù LLMs rất mạnh, chúng vẫn bị hạn chế về kiến thức chuyên ngành và tính cập nhật. Dự án này xây dựng hệ thống hỏi đáp thông minh dùng kiến trúc RAG, giúp người học khóa AI tại AI Việt Nam (AIO) khai thác hiệu quả nội dung tài liệu học tập.
 
@@ -354,7 +407,7 @@ def main_sidebar_enhancements():
 </code></pre>
 </details>
 
-##  5.3 Kết quả 📍
+##  5.3 Kết quả mở rộng 📍
 
 Hình ảnh giao diện của người dùng và kết quả chatbot bằng RAG sau khi cải tiến được ghi nhận sau đây.
 
