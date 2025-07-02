@@ -5,16 +5,18 @@ collection: project
 author: "Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến"
 ---
 
+Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
+
 # Tóm tắt
 Mặc dù LLMs rất mạnh, chúng vẫn bị hạn chế về kiến thức chuyên ngành và tính cập nhật. Dự án này xây dựng hệ thống hỏi đáp thông minh dùng kiến trúc RAG, giúp người học khóa AI tại AI Việt Nam (AIO) khai thác hiệu quả nội dung tài liệu học tập.
 
 
-# 1. Giới thiệu
+# 1. Giới thiệu 🗂 
 - Các Mô hình Ngôn ngữ Lớn (LLMs) như ChatGPT có khả năng trả lời linh hoạt nhưng bị giới hạn bởi dữ liệu huấn luyện, nên không xử lý tốt thông tin mới hoặc cá nhân hóa.
 - Để khắc phục, kiến trúc Retrieval-Augmented Generation (RAG) cho phép LLM truy xuất thông tin từ nguồn ngoài (như PDF, cơ sở dữ liệu) trước khi tạo câu trả lời, giúp kết quả chính xác và phù hợp hơn.
 - Mục tiêu dự án là xây dựng chatbot ứng dụng RAG, hỗ trợ học viên khóa AIO hỏi – đáp trực tiếp dựa trên nội dung tài liệu bài giảng.
 
-# 2. Phương pháp luận
+# 2. Phương pháp luận 📚 
 Hệ thống được xây dựng dựa trên kiến trúc RAG tiêu chuẩn, bao gồm hai quy trình chính: Lập chỉ mục dữ liệu (Indexing) và Truy vấn & Tạo sinh (Retrieval & Generation).
 
 ![Quy trình RAG tổng quan](/AIO.github.io/images/M01/M01_RAG_1.png)
@@ -152,7 +154,7 @@ def load_llm():
 </details>
 
 
-# 3. Thực hiện
+# 3. Thực hiện ⚙ 
 
 Ứng dụng được xây dựng bằng Python với giao diện người dùng tương tác được tạo bởi thư viện Streamlit. Các thư viện chính được sử dụng bao gồm:
 - Streamlit: Xây dựng giao diện web cho ứng dụng.
@@ -169,14 +171,32 @@ Giao diện ứng dụng cho phép người dùng:
 
 Để tối ưu hóa trải nghiệm, các mô hình nặng (embedding và LLM) được cache lại bằng @st.cache_resource của Streamlit, đảm bảo chúng chỉ cần tải một lần duy nhất khi khởi động ứng dụng
 
-# 4. Kết quả
-
-Hình 4: Giao diện ứng dụng khi trả lời câu hỏi của người dùng.
+# 4. Kết quả 📈 
 
 [👉 Xem file code](/AIO.github.io/files/M01_rag_chatbot.py)
 
 
-# 5. Mở rộng nâng cao
+![Tải model](/AIO.github.io/images/M01/M1-1.png)
+
+Hình 4.1: Giao diện của người dùng - Tải model.
+
+
+![Tải file](/AIO.github.io/images/M01/M1-2.png)
+
+Hình 4.2: Giao diện của người dùng - Model đã sẵn sàng và tải file.
+
+
+![Xử lý file](/AIO.github.io/images/M01/M1-3.png)
+
+Hình 4.3: Giao diện của người dùng - Xử lý file.
+
+
+![Chatbot trả lời](/AIO.github.io/images/M01/M1-5.png)
+
+Hình 4.4: Giao diện của người dùng - Đặt câu hỏi và chatbot trả lời.
+
+
+# 5. Mở rộng nâng cao 🖥
 
 Điểm cải tiến sau khi thực hiện dự án được đề xuất như nhau:
 
@@ -333,10 +353,21 @@ def main_sidebar_enhancements():
 </code></pre>
 </details>
 
+##  5.3 Kết quả 📍
+
+![Data mẫu YOLOv10_Tutorials](/AIO.github.io/images/M01/M1-6.png)
+
+Hình 5: Kết quả giao diện của người dùng với file Data mẫu YOLOv10_Tutorials.pdf
 
 
-# 6. Kết luận
+![file Medical Report](/AIO.github.io/images/M01/M1-7.png)
 
-- Dự án đã xây dựng thành công một chatbot ứng dụng kiến trúc RAG, có khả năng hỏi đáp trực tiếp và hiệu quả với các tài liệu PDF chuyên biệt, phù hợp với ngữ cảnh bằng cách kết hợp truy vấn thông tin của cơ sở dữ liệu vector và khả năng tạo sinh ngôn ngữ của LLMs.
-- Chất lượng câu trả lời của hệ thống phụ thuộc hoàn toàn vào hiệu quả của bước truy vấn thông tin (retrieval). Nếu quá trình tìm kiếm ngữ nghĩa không tìm được đúng đoạn văn bản chứa thông tin liên quan trong Vector Database, mô hình LLM sẽ không có đủ ngữ cảnh cần thiết, dẫn đến nguy cơ tạo ra câu trả lời sai, không đầy đủ hoặc không liên quan đến câu hỏi của người dùng.
-- Với phương pháp này, dự án mở ra nhiều hướng phát triển tiềm năng trong tương lai để tiếp tục tối ưu hóa tốc độ, độ chính xác và nâng cao trải nghiệm người dùng.
+Hình 6: Kết quả giao diện của người dùng với file Medical Report
+
+# 6. Kết luận 📌 
+
+- Dự án đã **xây dựng thành công một chatbot ứng dụng kiến trúc RAG, có khả năng hỏi đáp trực tiếp và hiệu quả với các tài liệu PDF chuyên biệt**, phù hợp với ngữ cảnh bằng cách kết hợp truy vấn thông tin của cơ sở dữ liệu vector và khả năng tạo sinh ngôn ngữ của LLMs.
+  
+- Chất lượng câu trả lời của hệ thống **phụ thuộc hoàn toàn vào hiệu quả của bước truy vấn thông tin (retrieval)**. Nếu quá trình tìm kiếm ngữ nghĩa không tìm được đúng đoạn văn bản chứa thông tin liên quan trong Vector Database, mô hình LLM sẽ không có đủ ngữ cảnh cần thiết, dẫn đến nguy cơ tạo ra câu trả lời sai, không đầy đủ hoặc không liên quan đến câu hỏi của người dùng.
+  
+- Với phương pháp này, dự án mở ra nhiều hướng phát triển tiềm năng trong tương lai để **tiếp tục tối ưu hóa tốc độ, độ chính xác và nâng cao trải nghiệm người dùng**.
