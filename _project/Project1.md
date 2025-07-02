@@ -8,32 +8,24 @@ author: "Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - 
 Tác giả: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
 
 <details>
-<summary><strong>📁 Xem Cấu trúc thư mục dự án</strong></summary>
+<summary><strong>📁 Cấu trúc thư mục (click để xem)</strong></summary>
 
-```text
-📦RAG_AIO_Chatbot
-├── 📁data/                       # Thư mục chứa các file PDF đầu vào
-│   ├── YOLOv10_Tutorials.pdf
-│   └── Medical_Report.pdf
-│
-├── 📁utils/
-│   ├── db_utils.py
-│   ├── history_utils.py
-│   ├── prompt_utils.py
-│   └── logger_utils.py
-│
-├── 📁models/
-│   ├── embedding_loader.py
-│   └── llm_loader.py
-│
-├── 📁files/
-│   ├── M01_rag_chatbot.py
-│   ├── M01_rag_chatbot_cai_tien.py
+<br>
+
+<pre><code>
+📦 RAG_AIO_Chatbot
+├── assets/              # Tài sản tĩnh (logo, favicon...)
+├── data/                # Tệp dữ liệu đầu vào (.pdf)
+├── images/              # Ảnh giao diện minh họa
+├── models/              # Module load LLM, embedding
+├── utils/               # Các tiện ích hỗ trợ (prompt, db, logger...)
+├── .streamlit/          # Cấu hình giao diện Streamlit
+├── M01_rag_chatbot.py
+├── M01_rag_chatbot_cai_tien.py
 ├── requirements.txt
-├── README.md
-└── .streamlit/
-    └── config.toml
-```
+└── README.md
+</code></pre>
+
 </details>
 
 <details>
