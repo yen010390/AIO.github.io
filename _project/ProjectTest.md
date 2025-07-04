@@ -12,10 +12,22 @@ tags:
 **Tác giả**: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
 
 <details>
-<summary><strong>📁 Cấu trúc source code (click để xem)</strong></summary>
+<summary><strong>📁 This wont work 1</strong></summary>
+
+Source code và tài liệu có thể được tìm thấy tại:
+- [GitHub Repository](https://github.com/aio25-mix002/m01-p0102)
+- [Jupyter Notebook hướng dẫn](https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb)
 
 </details>
 
+<details>
+<summary><strong>📁 This wont work 2</strong></summary>
+<div>
+Source code và tài liệu có thể được tìm thấy tại:
+- [GitHub Repository](https://github.com/aio25-mix002/m01-p0102)
+- [Jupyter Notebook hướng dẫn](https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb)
+</div>
+</details>
 
 Source code và tài liệu có thể được tìm thấy tại:
 - [GitHub Repository](https://github.com/aio25-mix002/m01-p0102)
