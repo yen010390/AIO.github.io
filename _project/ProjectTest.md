@@ -12,7 +12,10 @@ tags:
 **Tác giả**: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
 
 <details>
-<summary><strong>📁 Cấu trúc source code  (click để xem)</strong></summary>
+<summary><strong>📁 Cấu trúc source code (click để xem)</strong></summary>
+
+</details>
+
 
 Source code và tài liệu có thể được tìm thấy tại:
 - [GitHub Repository](https://github.com/aio25-mix002/m01-p0102)
@@ -43,5 +46,4 @@ Source code và tài liệu có thể được tìm thấy tại:
 ├── .gitignore                # Git ignore rules
 └── README.md                 # Tài liệu hướng dẫn
 ```
-</details>
 
