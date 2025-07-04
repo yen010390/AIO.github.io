@@ -20,6 +20,7 @@ tags:
 <br/>
 
 ```
+
 📦 RAG_AIO_Chatbot
 ├── assets/                   # Tài sản tĩnh (logo, favicon...)
 │   └── logo.png              # Logo của ứng dụng
