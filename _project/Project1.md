@@ -87,7 +87,7 @@ Hệ thống được xây dựng dựa trên kiến trúc RAG tiêu chuẩn, ba
 - Truy vấn & Tạo sinh (Retrieval & Generation).
 
 
-![Quy trình RAG tổng quan](/images/M01/M01_RAG_1.png)
+![Quy trình RAG tổng quan](/AIO.github.io/images/M01/M01_RAG_1.png)
 
 Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
 
@@ -130,7 +130,7 @@ semantic_splitter = SemanticChunker(
 
 </details>
 
-![Semantic Chunking](/images/M01/M01_RAG_3.png)
+![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
 
 Hình 2: Sơ đồ về Semantic Chunking.
 
@@ -152,7 +152,7 @@ def load_embeddings():
 ```
 </details>
 
-![Vector database](/images/M01/M01_RAG_2.png)
+![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
 
 Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
@@ -322,22 +322,22 @@ File code hoàn chỉnh và hình ảnh giao diện của người dùng và k�
 **👉 Xem file code**: https://github.com/aio25-mix002/m01-p0102
 
 
-![Tải model](/images/M01/M1-1.png)
+![Tải model](/AIO.github.io/images/M01/M1-1.png)
 
 Hình 4.1: Giao diện của người dùng - Tải model.
 
 
-![Tải file](/images/M01/M1-2.png)
+![Tải file](/AIO.github.io/images/M01/M1-2.png)
 
 Hình 4.2: Giao diện của người dùng - Model đã sẵn sàng và tải file.
 
 
-![Xử lý file](/images/M01/M1-3.png)
+![Xử lý file](/AIO.github.io/images/M01/M1-3.png)
 
 Hình 4.3: Giao diện của người dùng - Xử lý file.
 
 
-![Chatbot trả lời](/images/M01/M1-5.png)
+![Chatbot trả lời](/AIO.github.io/images/M01/M1-5.png)
 
 Hình 4.4: Giao diện của người dùng - Đặt câu hỏi và chatbot trả lời.
 
@@ -556,18 +556,18 @@ def process_pdf(uploaded_files):
 Hình ảnh giao diện của người dùng và kết quả chatbot bằng RAG sau khi cải tiến được ghi nhận sau đây.
 
 ### 5.3.1 Hỗ trợ ghi nhớ 
-![Data mẫu YOLOv10_Tutorials](/images/M01/M1-6.png)
+![Data mẫu YOLOv10_Tutorials](/AIO.github.io/images/M01/M1-6.png)
 
 Hình 5: Kết quả giao diện của người dùng với file Data mẫu YOLOv10_Tutorials.pdf
 
 
 ### 5.3.2 Xử dụng tập tài liệu khác ứng dụng trong y khoa
-![file Medical Report](/images/M01/M1-7.png)
+![file Medical Report](/AIO.github.io/images/M01/M1-7.png)
 
 Hình 6: Kết quả giao diện của người dùng với file Medical Report
 
 ### 5.3.3 Hỗ trợ làm việc với nhiều tài liệu khác nhau
-![file Multiple File](/images/M01/M1-8.jpg)
+![file Multiple File](/AIO.github.io/images/M01/M1-8.jpg)
 
 Hình 7: Kết quả giao diện làm việc với nhiều tài liệu khác nhau
 
