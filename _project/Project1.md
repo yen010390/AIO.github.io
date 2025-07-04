@@ -266,7 +266,7 @@ Giao diện ứng dụng cho phép người dùng:
 
 File code hoàn chỉnh và hình ảnh giao diện của người dùng và kết quả chatbot bằng RAG được ghi nhận sau đây.
 
-**👉 Xem file code**: (https://github.com/aio25-mix002/m01-p0102)[https://github.com/aio25-mix002/m01-p0102]
+**👉 Xem file code**: [https://github.com/aio25-mix002/m01-p0102](https://github.com/aio25-mix002/m01-p0102)
 
 
 ![Tải model](/AIO.github.io/images/M01/M1-1.png)
