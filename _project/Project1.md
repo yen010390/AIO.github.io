@@ -20,8 +20,7 @@ tags:
 <br/>
 
 
-```
-
+<pre><code>
 📦 RAG_AIO_Chatbot
 ├── assets/                   # Tài sản tĩnh (logo, favicon...)
 │   └── logo.png              # Logo của ứng dụng
@@ -43,7 +42,7 @@ tags:
 ├── requirements-torch.txt    # Dependencies PyTorch
 ├── .gitignore                # Git ignore rules
 └── README.md                 # Tài liệu hướng dẫn
-```
+</code></pre>
 </details>
 
 <details>
@@ -99,14 +98,14 @@ Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
 <details>
 <summary> Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF (PyPDFLoader) </summary>
 
-```python
-# Hàm PyPDFLoader
+<pre><code class="language-python">
+#Hàm PyPDFLoader
 from langchain.document_loaders import PyPDFLoader
 
-# Tải file PDF và trích xuất văn bản
+#Tải file PDF và trích xuất văn bản
 loader = PyPDFLoader(tmp_file_path)
 documents = loader.load()
-```
+</code></pre>
 </details>
 
 <details>
@@ -116,7 +115,7 @@ Giải pháp hiện tại là sử dụng SemanticChunker để chia các đoạ
 
 Quá trình này bao gồm việc tách văn bản thành từng câu, sau đó nhóm mỗi 3 câu lại với nhau, rồi hợp nhất các nhóm có nội dung tương tự nhau dựa trên không gian embedding.
 
-```python
+<pre><code class="language-python">
 #Hàm SemanticChunker
 from langchain.text_splitter import SemanticChunker
 
@@ -128,7 +127,7 @@ semantic_splitter = SemanticChunker(
     min_chunk_size = 500,
     add_start_index = True
 )
-```
+</code></pre>
 
 </details>
 
@@ -145,13 +144,13 @@ Trong giải pháp hiện tại ta sử dụng `bkai-foundation-models/vietnames
 Việc sử dụng cấu trúc dữ liệu vector giúp việc xử dụng các thuật toán truy vấn vector để tìm kiếm các văn bản tương ướng (ví dụ thuật toán HNSW trong chroma database)
 
 
-```python
-# Sử dụng mô hình embedding bkai-foundation-models/vietnamese-bi-encoder
+<pre><code class="language-python">
+#Sử dụng mô hình embedding bkai-foundation-models/vietnamese-bi-encoder
 from langchain.embeddings import HuggingFaceEmbeddings
 
 def load_embeddings():
     return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
-```
+</code></pre>
 </details>
 
 ![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
@@ -164,17 +163,17 @@ Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
 Trong giải pháp hiện tại sử dụng Chroma làm vector database. 
 
-```python    
+<pre><code class="language-python">    
 from langchain.vectorstores import Chroma
 
 #ChromaDB, langchain.vectorstores
 
-# Phân đoạn và lưu trữ vector
+#Phân đoạn và lưu trữ vector
 docs = semantic_splitter.split_documents(documents)
 vector_db = Chroma.from_documents(documents=docs, embedding=st.session_state.embeddings)
 retriever = vector_db.as_retriever()
 
-```
+</code></pre>
 
 </details>
 
@@ -194,7 +193,7 @@ Trong đoạn code sau:
 - Sau đó đi qua retriever (được tạo từ vector_db.as_retriever())
 - Retriever sử dụng cùng mô hình e`mbedding bkai-foundation-models/vietnamese-bi-encoder` để chuyển câu hỏi thành vector 
 
-```python
+<pre><code class="language-python">
 retriever = vector_db.as_retriever()
 rag_chain = (
     {
@@ -205,7 +204,7 @@ rag_chain = (
     ...
 )
 
-```
+</code></pre>
 </details>
 
 <details>
@@ -224,7 +223,7 @@ Tiếp tục Bước 1 được mô tả ở trên:
 
 Sau khi tổng hợp các dữ liệu cần thiết (context data), chúng ta sẽ tiến hành tạo Prompt để gởi cho LLM. 
 
-```python
+<pre><code class="language-python">
      rag_chain = (
         {
             "context": itemgetter("question")
@@ -239,10 +238,10 @@ Sau khi tổng hợp các dữ liệu cần thiết (context data), chúng ta s�
         | st.session_state.llm
         | StrOutputParser()
     )
-```
+</code></pre>
 
 Trong giải pháp hiện tại ta sử dụng prompt template sau: 
-```yaml
+<code><pre>
 You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
 Instructions:
 - Use three sentences maximum
@@ -257,7 +256,7 @@ Context:
 Question: {question} 
 
 Answer:
-```
+</code></pre>
 
 </details>
 
@@ -269,8 +268,8 @@ Trong giải pháp hiện tại ta:
 - Sử dụng mô hình ngôn ngữ `lmsys/vicuna-7b-v1.5`
 - Vì giới mặt về mặt phần cứng ta áp dụng quantizing về không gian 4bit để giảm yêu cầu về memory của GPU. 
 
-```python
-# Sử dụng mô hình lmsys/vicuna-7b-v1.5  
+<pre><code class="language-python">
+#Sử dụng mô hình lmsys/vicuna-7b-v1.5  
 def load_llm():
   MODEL_NAME = "lmsys/vicuna-7b-v1.5"
   nf4_config = BitsAndBytesConfig(
@@ -293,7 +292,7 @@ def load_llm():
     device_map = "auto"
   )
   return HuggingFacePipeline(pipeline = model_pipeline)
-```
+</code></pre>
 </details>
 
 
@@ -370,7 +369,7 @@ Hình 4.4: Giao diện của người dùng - Đặt câu hỏi và chatbot tr�
 <summary>5.2.1.1. Xây dựng prompt có chứa lịch sử hội thoại </summary>
 Ta sử dụng kỹ thuật Prompting để đưa lịch sử hội thoại vào câu prompt
 
-```yaml
+<code><pre>
 You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
 Instructions:
 - Use three sentences maximum
@@ -385,7 +384,7 @@ Context:
 Question: {question} 
 
 Answer:
-```
+</code></pre>
 </details>
 
 
@@ -399,7 +398,7 @@ Giải pháp hiện tại là áp dụng kỹ thuật đơn giản nhất là l�
     - Vấn đề vượt quá context windows cũng có thể xảy ra
     - Các tin nhắn quá khứ nếu không liên quan đến câu hỏi hiện tại cũng có thể gây nhiễu và ảnh hưởng đến kết quả đầu ra. 
 
-```python
+<pre><code class="language-python">
 
 def retrieve_chat_history():
     message_threshold = 10
@@ -411,13 +410,13 @@ def format_history(histories):
         role = "User" if msg["role"] == "user" else "Assistant"
         formatted_history += f"{role}: {msg['content']}\n\n"
     return formatted_history.strip()
-```
+</code></pre>
 </details>
 
 <details>
 <summary>5.2.1.3. Cập nhật RAG Chain để xử lý lịch sử chat </summary>
 
-```python
+<pre><code class="language-python">
 def process_pdf_updated_chain(retriever, llm):
     prompt = build_prompt_ragprompt_withhistory_en()
     rag_chain = (
@@ -431,27 +430,27 @@ def process_pdf_updated_chain(retriever, llm):
         | StrOutputParser()
     )
     return rag_chain
-```
+</code></pre>
 </details>
 
 
 <details>
 <summary>5.2.1.4. Cập nhật cách gọi RAG chain (main_updated_invoke) </summary>
-```python
+<pre><code class="language-python">
 #Hàm main_updated_invoke
 def main_updated_invoke(user_input):
     output = st.session_state.rag_chain.invoke({
         "question": user_input,
         "chat_history": retrieve_chat_history()
     })
-```
+</code></pre>
 </details>
 
 ### 5.2.2 Quản lý Vector DB nâng cao
 <details>
 <summary>Lưu Vector DB xuống ổ đĩa (persistence) để dễ debug và tránh các lỗi trên in-memory </summary>
 
-```python
+<pre><code class="language-python">
 def get_chroma_client(allow_reset=False):
     """Get a Chroma client for vector database operations."""
     return chromadb.PersistentClient(settings=chromadb.Settings(allow_reset=allow_reset))
@@ -464,7 +463,7 @@ def process_pdf_updated_db_handling():
         embedding=st.session_state.embeddings,
         client=client
     )
-```
+</code></pre>
 </details>
 
 
@@ -472,7 +471,7 @@ def process_pdf_updated_db_handling():
 <details>
 <summary>Thêm logger vào ứng dụng để dễ truy vết </summary>
 
-```python
+<pre><code class="language-python">
 def format_docs_with_logging(docs):
     logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
     for i, doc in enumerate(docs):
@@ -485,13 +484,13 @@ def format_docs_with_logging(docs):
         {doc.page_content}""")
     
     return "\n\n".join(doc.page_content for doc in docs)
-```
+</code></pre>
 </details>
 
 ### 5.2.4. Xử lý và truy vấn từ nhiều file tài liệu
 <details>
 
-```python
+<pre><code class="language-python">
 def process_pdf(uploaded_files):
     """Process multiple uploaded PDF files, combine their docs, and build a single retriever and RAG chain."""
     all_docs = []
@@ -550,7 +549,7 @@ def process_pdf(uploaded_files):
     )
     return rag_chain, len(all_docs), file_names
 
-```
+</code></pre>
 </details>
 
 ##  5.3 Kết quả mở rộng 📍
