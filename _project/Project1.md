@@ -11,44 +11,7 @@ tags:
 
 **Tác giả**: Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến
 
-<details>
-<summary><strong>📁 Cấu trúc source code  (click để xem)</strong></summary>
-
-- Source code được đặt tại đây: [https://github.com/aio25-mix002/m01-p0102](https://github.com/aio25-mix002/m01-p0102)
-
-- Jupiter Notebooks: [https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb](https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb)
-
-<br>
-
-
-<pre><code>
-📦 RAG_AIO_Chatbot
-├── assets/                   # Tài sản tĩnh (logo, favicon...)
-│   └── logo.png              # Logo của ứng dụng
-├── examples/                 # Dữ liệu mẫu để test
-│   └── YOLOv10_Tutorials.pdf # File PDF mẫu
-├── logs/                     # Thư mục lưu log
-├── prompt_templates/         # Các template prompt cho RAG
-├── utils/                    # Các tiện ích hỗ trợ
-│   ├── logging_utils.py      # Utility logging
-│   └── prompt_utils.py       # Utility quản lý prompt
-├── .vscode/                  # Cấu hình Visual Studio Code
-│   └── launch.json           # Debug configuration
-├── .env                      # Biến môi trường production
-├── .env.example              # Template biến môi trường
-├── .env.local                # Biến môi trường local
-├── rag_chatbot.py            # File chính - Streamlit RAG chatbot
-├── runbook_m01p0102.ipynb    # Jupyter notebook hướng dẫn
-├── requirements.txt          # Dependencies chính
-├── requirements-torch.txt    # Dependencies PyTorch
-├── .gitignore                # Git ignore rules
-└── README.md                 # Tài liệu hướng dẫn
-</code></pre>
-</details>
-
-<details>
-<summary><strong>📁 Mục lục báo cáo (click để xem)</strong></summary>
-<br>
+**Mục lục**
 
 - [Tóm tắt](#tóm-tắt)
 - [1. Giới thiệu 🗂](#1-giới-thiệu-)
@@ -69,8 +32,10 @@ tags:
     - [5.3.2 Xử dụng tập tài liệu khác ứng dụng trong y khoa](#532-xử-dụng-tập-tài-liệu-khác-ứng-dụng-trong-y-khoa)
     - [5.3.3 Hỗ trợ làm việc với nhiều tài liệu khác nhau](#533-hỗ-trợ-làm-việc-với-nhiều-tài-liệu-khác-nhau)
 - [6. Kết luận 📌](#6-kết-luận-)
+- [7. Phụ lục](#7-phụ-lục)
+  - [7.1 Tải source code](#71-tải-source-code)
+  - [7.2 Cấu trúc source code](#72-cấu-trúc-source-code)
 
-</details>
 
 <br>
 
@@ -95,28 +60,25 @@ Hình 1: Sơ đồ tổng quan về chương trình RAG trong project.
 
 
 ## 2.1. Quy trình Lập chỉ mục dữ liệu (Indexing)
+**Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF (PyPDFLoader)**
 
-<details>
-<summary> Bước 1: Tải dữ liệu – Đọc và trích xuất văn bản từ file PDF (PyPDFLoader) </summary>
-
-<pre><code class="language-python">
+```python
 #Hàm PyPDFLoader
 from langchain.document_loaders import PyPDFLoader
 
 #Tải file PDF và trích xuất văn bản
 loader = PyPDFLoader(tmp_file_path)
 documents = loader.load()
-</code></pre>
-</details>
+```
 
-<details>
-<summary>Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks) </summary>
+**Bước 2: Phân đoạn – Chia văn bản thành các đoạn nhỏ (chunks)**
+
 Giải pháp hiện tại là sử dụng SemanticChunker để chia các đoạn dựa theo độ tương đồng về mặt ngữ nghĩa (semantic similarity). 
 
 
 Quá trình này bao gồm việc tách văn bản thành từng câu, sau đó nhóm mỗi 3 câu lại với nhau, rồi hợp nhất các nhóm có nội dung tương tự nhau dựa trên không gian embedding.
 
-<pre><code class="language-python">
+```python
 #Hàm SemanticChunker
 from langchain.text_splitter import SemanticChunker
 
@@ -128,16 +90,14 @@ semantic_splitter = SemanticChunker(
     min_chunk_size = 500,
     add_start_index = True
 )
-</code></pre>
+```
 
-</details>
 
 ![Semantic Chunking](/AIO.github.io/images/M01/M01_RAG_3.png)
 
 Hình 2: Sơ đồ về Semantic Chunking.
 
-<details>
-<summary>Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học </summary>
+**Bước 3: Mã hóa – Chuyển mỗi đoạn văn bản thành vector số học**
 Các đoạn văn bản dạng chuỗi cần được chuyển đổi về dạng số học để áp dụng các thuật toán xử lý phù hợp. Việc này gọi là encoding. 
 
 Trong giải pháp hiện tại ta sử dụng `bkai-foundation-models/vietnamese-bi-encoder` làm mô hình embedding để chuyển đổi các đoạn văn bản dạng chuỗi sang không gian vector số.
@@ -145,26 +105,25 @@ Trong giải pháp hiện tại ta sử dụng `bkai-foundation-models/vietnames
 Việc sử dụng cấu trúc dữ liệu vector giúp việc xử dụng các thuật toán truy vấn vector để tìm kiếm các văn bản tương ướng (ví dụ thuật toán HNSW trong chroma database)
 
 
-<pre><code class="language-python">
+```python
 #Sử dụng mô hình embedding bkai-foundation-models/vietnamese-bi-encoder
 from langchain.embeddings import HuggingFaceEmbeddings
 
 def load_embeddings():
     return HuggingFaceEmbeddings(model_name="bkai-foundation-models/vietnamese-bi-encoder")
-</code></pre>
-</details>
+```
+
 
 ![Vector database](/AIO.github.io/images/M01/M01_RAG_2.png)
 
 Hình 3: Sơ đồ bước thực hiện xây dựng vector database.
 
 
-<details>
-<summary>Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh</summary>
+**Bước 4: Lưu trữ – Lưu các vector vào cơ sở dữ liệu để truy vấn nhanh**
 
 Trong giải pháp hiện tại sử dụng Chroma làm vector database. 
 
-<pre><code class="language-python">    
+```python    
 from langchain.vectorstores import Chroma
 
 #ChromaDB, langchain.vectorstores
@@ -174,15 +133,13 @@ docs = semantic_splitter.split_documents(documents)
 vector_db = Chroma.from_documents(documents=docs, embedding=st.session_state.embeddings)
 retriever = vector_db.as_retriever()
 
-</code></pre>
+```
 
-</details>
 
 
 ## 2.2. Quy trình Truy vấn và Tạo sinh (Retrieval & Generation)
 
-<details>
-<summary>Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector </summary>
+**Bước 1: Mã hóa câu hỏi – Chuyển câu hỏi của người dùng thành vector**
 
 Tương tự quy trình lập chỉ mục dữ liệu ở trên. Ta cần chuyển câu hỏi về không gian vector số để có thể áp dụng các thuật toán truy vấn dữ liệu để đối chiếu tới các tài liệu đã được xử lý trước đó. 
 
@@ -194,7 +151,7 @@ Trong đoạn code sau:
 - Sau đó đi qua retriever (được tạo từ vector_db.as_retriever())
 - Retriever sử dụng cùng mô hình e`mbedding bkai-foundation-models/vietnamese-bi-encoder` để chuyển câu hỏi thành vector 
 
-<pre><code class="language-python">
+```python
 retriever = vector_db.as_retriever()
 rag_chain = (
     {
@@ -205,26 +162,20 @@ rag_chain = (
     ...
 )
 
-</code></pre>
-</details>
+```
 
-<details>
-<summary>Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu (ChromaDB)</summary>
+
+**Bước 2: Truy vấn – Tìm kiếm các đoạn văn bản liên quan nhất trong cơ sở dữ liệu (ChromaDB)**
 
 Tiếp tục Bước 1 được mô tả ở trên: 
 - Retriever tiếp tục tìm kiếm các tài liệu tương tự trong vector database.
 - Với cấu hình mặc định, retriever sẽ trả về 4 chunks (documents) có độ tương đồng cao nhất với câu hỏi.
 
-
-</details>
-
-
-<details>
-<summary>Bước 3: Tạo prompt – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh </summary>
+**Bước 3: Tạo prompt – Kết hợp câu hỏi và đoạn văn bản thành một prompt hoàn chỉnh**
 
 Sau khi tổng hợp các dữ liệu cần thiết (context data), chúng ta sẽ tiến hành tạo Prompt để gởi cho LLM. 
 
-<pre><code class="language-python">
+```python
      rag_chain = (
         {
             "context": itemgetter("question")
@@ -239,10 +190,10 @@ Sau khi tổng hợp các dữ liệu cần thiết (context data), chúng ta s�
         | st.session_state.llm
         | StrOutputParser()
     )
-</code></pre>
+```
 
 Trong giải pháp hiện tại ta sử dụng prompt template sau: 
-<code><pre>
+```yml
 You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
 Instructions:
 - Use three sentences maximum
@@ -257,19 +208,16 @@ Context:
 Question: {question} 
 
 Answer:
-</code></pre>
-
-</details>
+```
 
 
-<details>
-<summary>Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng </summary>
+**Bước 4: Tạo sinh – Dựa vào prompt đã tăng cường để tạo ra câu trả lời cuối cùng**
 
 Trong giải pháp hiện tại ta:
 - Sử dụng mô hình ngôn ngữ `lmsys/vicuna-7b-v1.5`
 - Vì giới mặt về mặt phần cứng ta áp dụng quantizing về không gian 4bit để giảm yêu cầu về memory của GPU. 
 
-<pre><code class="language-python">
+```python
 #Sử dụng mô hình lmsys/vicuna-7b-v1.5  
 def load_llm():
   MODEL_NAME = "lmsys/vicuna-7b-v1.5"
@@ -293,10 +241,7 @@ def load_llm():
     device_map = "auto"
   )
   return HuggingFacePipeline(pipeline = model_pipeline)
-</code></pre>
-</details>
-
-
+```
 
 # 3. Thực hiện ⚙ 
 
@@ -366,11 +311,10 @@ Hình 4.4: Giao diện của người dùng - Đặt câu hỏi và chatbot tr�
 ##  5.2 Code nâng cao
 
 ### 5.2.1 Nâng cấp cốt lỗi: Ghi nhớ lịch sử hội thoại (Conversation memory) 
-<details>
-<summary>5.2.1.1. Xây dựng prompt có chứa lịch sử hội thoại </summary>
+**5.2.1.1. Xây dựng prompt có chứa lịch sử hội thoại**
 Ta sử dụng kỹ thuật Prompting để đưa lịch sử hội thoại vào câu prompt
 
-<code><pre>
+```yml
 You are an assistant for question-answering tasks. Use the following pieces of retrieved context and conversation history to answer the question. If you don't know the answer, just say that you don't know. 
 Instructions:
 - Use three sentences maximum
@@ -385,12 +329,11 @@ Context:
 Question: {question} 
 
 Answer:
-</code></pre>
-</details>
+```
 
 
-<details>
-<summary>5.2.1.2. Định dạng và truy xuất lịch sử chat</summary>
+
+**5.2.1.2. Định dạng và truy xuất lịch sử chat**
 Lý tưởng thì ta có thể đưa toàn độ đoạn hội thoại vào prompt, tuy nhiên việc này có thể gây vượt quá context windows mà LLM model có thể hỗ trợ. 
 
 Giải pháp hiện tại là áp dụng kỹ thuật đơn giản nhất là lấy 10 tin nhắn gần đây nhất. 
@@ -399,7 +342,7 @@ Giải pháp hiện tại là áp dụng kỹ thuật đơn giản nhất là l�
     - Vấn đề vượt quá context windows cũng có thể xảy ra
     - Các tin nhắn quá khứ nếu không liên quan đến câu hỏi hiện tại cũng có thể gây nhiễu và ảnh hưởng đến kết quả đầu ra. 
 
-<pre><code class="language-python">
+```python
 
 def retrieve_chat_history():
     message_threshold = 10
@@ -411,13 +354,11 @@ def format_history(histories):
         role = "User" if msg["role"] == "user" else "Assistant"
         formatted_history += f"{role}: {msg['content']}\n\n"
     return formatted_history.strip()
-</code></pre>
-</details>
+```
 
-<details>
-<summary>5.2.1.3. Cập nhật RAG Chain để xử lý lịch sử chat </summary>
+**5.2.1.3. Cập nhật RAG Chain để xử lý lịch sử chat**
 
-<pre><code class="language-python">
+```python
 def process_pdf_updated_chain(retriever, llm):
     prompt = build_prompt_ragprompt_withhistory_en()
     rag_chain = (
@@ -431,27 +372,24 @@ def process_pdf_updated_chain(retriever, llm):
         | StrOutputParser()
     )
     return rag_chain
-</code></pre>
-</details>
+```
 
 
-<details>
-<summary>5.2.1.4. Cập nhật cách gọi RAG chain (main_updated_invoke) </summary>
-<pre><code class="language-python">
+**5.2.1.4. Cập nhật cách gọi RAG chain (main_updated_invoke)**
+```python
 #Hàm main_updated_invoke
 def main_updated_invoke(user_input):
     output = st.session_state.rag_chain.invoke({
         "question": user_input,
         "chat_history": retrieve_chat_history()
     })
-</code></pre>
-</details>
+```
+
 
 ### 5.2.2 Quản lý Vector DB nâng cao
-<details>
-<summary>Lưu Vector DB xuống ổ đĩa (persistence) để dễ debug và tránh các lỗi trên in-memory </summary>
+Lưu Vector DB xuống ổ đĩa (persistence) để dễ debug và tránh các lỗi trên in-memory 
 
-<pre><code class="language-python">
+```python
 def get_chroma_client(allow_reset=False):
     """Get a Chroma client for vector database operations."""
     return chromadb.PersistentClient(settings=chromadb.Settings(allow_reset=allow_reset))
@@ -464,15 +402,15 @@ def process_pdf_updated_db_handling():
         embedding=st.session_state.embeddings,
         client=client
     )
-</code></pre>
-</details>
+```
+
 
 
 ### 5.2.3. Gỡ lỗi (Debugging) với Logger
-<details>
-<summary>Thêm logger vào ứng dụng để dễ truy vết </summary>
 
-<pre><code class="language-python">
+Thêm logger vào ứng dụng để dễ truy vết
+
+```python
 def format_docs_with_logging(docs):
     logger.info(f"**Debug: Retrieved {len(docs)} chunks:**")
     for i, doc in enumerate(docs):
@@ -485,13 +423,12 @@ def format_docs_with_logging(docs):
         {doc.page_content}""")
     
     return "\n\n".join(doc.page_content for doc in docs)
-</code></pre>
-</details>
+```
+
 
 ### 5.2.4. Xử lý và truy vấn từ nhiều file tài liệu
-<details>
 
-<pre><code class="language-python">
+```python
 def process_pdf(uploaded_files):
     """Process multiple uploaded PDF files, combine their docs, and build a single retriever and RAG chain."""
     all_docs = []
@@ -550,8 +487,8 @@ def process_pdf(uploaded_files):
     )
     return rag_chain, len(all_docs), file_names
 
-</code></pre>
-</details>
+```
+
 
 ##  5.3 Kết quả mở rộng 📍
 
@@ -580,3 +517,40 @@ Hình 7: Kết quả giao diện làm việc với nhiều tài liệu khác nha
 - Chất lượng câu trả lời của hệ thống **phụ thuộc hoàn toàn vào hiệu quả của bước truy vấn thông tin (retrieval)**. Nếu quá trình tìm kiếm ngữ nghĩa không tìm được đúng đoạn văn bản chứa thông tin liên quan trong Vector Database, mô hình LLM sẽ không có đủ ngữ cảnh cần thiết, dẫn đến nguy cơ tạo ra câu trả lời sai, không đầy đủ hoặc không liên quan đến câu hỏi của người dùng.
   
 - Với phương pháp này, dự án mở ra nhiều hướng phát triển tiềm năng trong tương lai để **tiếp tục tối ưu hóa tốc độ, độ chính xác và nâng cao trải nghiệm người dùng**.
+
+
+
+# 7. Phụ lục
+
+## 7.1 Tải source code
+
+- Source code được đặt tại đây: [https://github.com/aio25-mix002/m01-p0102](https://github.com/aio25-mix002/m01-p0102)
+
+- Jupiter Notebooks: [https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb](https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb)
+
+
+## 7.2 Cấu trúc source code
+
+```python
+📦 RAG_AIO_Chatbot
+├── assets/                   # Tài sản tĩnh (logo, favicon...)
+│   └── logo.png              # Logo của ứng dụng
+├── examples/                 # Dữ liệu mẫu để test
+│   └── YOLOv10_Tutorials.pdf # File PDF mẫu
+├── logs/                     # Thư mục lưu log
+├── prompt_templates/         # Các template prompt cho RAG
+├── utils/                    # Các tiện ích hỗ trợ
+│   ├── logging_utils.py      # Utility logging
+│   └── prompt_utils.py       # Utility quản lý prompt
+├── .vscode/                  # Cấu hình Visual Studio Code
+│   └── launch.json           # Debug configuration
+├── .env                      # Biến môi trường production
+├── .env.example              # Template biến môi trường
+├── .env.local                # Biến môi trường local
+├── rag_chatbot.py            # File chính - Streamlit RAG chatbot
+├── runbook_m01p0102.ipynb    # Jupyter notebook hướng dẫn
+├── requirements.txt          # Dependencies chính
+├── requirements-torch.txt    # Dependencies PyTorch
+├── .gitignore                # Git ignore rules
+└── README.md                 # Tài liệu hướng dẫn
+```

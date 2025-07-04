@@ -1,6 +1,5 @@
 ---
-title: "[Test]Module 1: Ứng dụng RAG trong việc hỏi đáp tài liệu bài học AIO"
-excerpt: "Dự án này xây dựng hệ thống hỏi đáp thông minh dùng kiến trúc RAG, giúp người học khóa AI tại AI Việt Nam (AIO) khai thác hiệu quả nội dung tài liệu học tập."
+title: "[Test] Testing Project"
 collection: project
 author: "Nguyễn Tuấn Anh - Đoàn Tấn Hưng - Hồ Thị Ngọc Huyền - Trần Thị Mỹ Tú - Đặng Thị Hoàng Yến"
 tags:
@@ -28,6 +27,9 @@ Source code và tài liệu có thể được tìm thấy tại:
 - [Jupyter Notebook hướng dẫn](https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb)
 </div>
 </details>
+
+
+**This should work:** 
 
 Source code và tài liệu có thể được tìm thấy tại:
 - [GitHub Repository](https://github.com/aio25-mix002/m01-p0102)
