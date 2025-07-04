@@ -18,7 +18,7 @@ tags:
 
 - Jupiter Notebooks: [https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb](https://github.com/aio25-mix002/m01-p0102/blob/main/runbook_m01p0102.ipynb)
 
-<br/>
+<br>
 
 
 <pre><code>
@@ -48,7 +48,7 @@ tags:
 
 <details>
 <summary><strong>📁 Mục lục báo cáo (click để xem)</strong></summary>
-<br/>
+<br>
 
 - [Tóm tắt](#tóm-tắt)
 - [1. Giới thiệu 🗂](#1-giới-thiệu-)
@@ -72,7 +72,7 @@ tags:
 
 </details>
 
-<br/>
+<br>
 
 # Tóm tắt
 Mặc dù LLMs rất mạnh, chúng vẫn bị hạn chế về kiến thức chuyên ngành và tính cập nhật. Dự án này xây dựng hệ thống hỏi đáp thông minh dùng kiến trúc RAG, giúp người học khóa AI tại AI Việt Nam (AIO) khai thác hiệu quả nội dung tài liệu học tập.
