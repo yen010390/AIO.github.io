@@ -35,7 +35,6 @@ tags:
 - [7. Phụ lục](#7-phụ-lục)
   - [7.1 Tải source code](#71-tải-source-code)
   - [7.2 Cấu trúc source code](#72-cấu-trúc-source-code)
-  - [7.3 Cấu trúc source code](#72-cấu-trúc-sourc-code)
 
 
 <br>
